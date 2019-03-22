@@ -86,7 +86,7 @@
 ##8.7.Session的有效期：为防止内存溢出，服务器会把长时间内没有活跃的Session从内存删除。这个时间就是Session的超时时间。
 
 #九.Jdbc
-![](https://i.imgur.com/h7S0Oxr.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/JDBC%E6%B5%81%E7%A8%8B.png)
 ##9.1.JDBC代表Java数据库连接
 ##9.2.JDBC体系结构:1.JDBC API：提供应用程序到JDBC管理器连接;2.JDBC驱动程序API：支持JDBC管理器到驱动程序连接。
 ##9.3.JDBC API常见接口与类：
@@ -123,10 +123,9 @@
 ###9.7.5.在创建的Statement对象上使用executeBatch()方法执行所有SQL语句。
 ###9.7.6.最后，使用commit()方法提交所有更改
 ##9.8.应用与数据库间的timeout层级
-![](https://i.imgur.com/U2Qrnm2.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Timeout%20for%20Each%20Levels..png)
 ###9.8.1.transaction timeout:“statement Timeout * N（需要执行的statement数量） + @（垃圾回收等其他时间）”。transaction timeout用来限制执行statement的总时长。
 ###9.8.2.Statement Timeout:用来限制statement的执行时长，timeout的值通过调用JDBC的java.sql.Statement.setQueryTimeout(int timeout) API进行设置。不过现在开发者已经很少直接在代码中设置，而多是通过框架来进行设置。
-![](https://i.imgur.com/L224vPD.png)
 ###9.8.3.为了避免dead connections，socket必须要有超时配置。socket timeout可以通过JDBC设置，socket timeout能够避免应用在发生网络错误时产生无休止等待的情况，缩短服务失效的时间。
 ####9.8.3.1.socket连接时的timeout：通过Socket.connect(SocketAddress endpoint, int timeout)设置
 ####9.8.3.2.socket读写时的timeout：通过Socket.setSoTimeout(int timeout)设置
@@ -161,7 +160,7 @@
 
 #十一.HTTP
 ##11.1.Http协议的变化
-![](https://i.imgur.com/GbAdvb9.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/HTTP%E5%8D%8F%E8%AE%AE.png)
 ###11.1.1.HTTP/1.x 有连接无法复用、队头阻塞、协议开销大和安全因素等多个缺陷
 ###11.1.2.HTTP/2 通过多路复用、二进制流、Header 压缩等等技术，极大地提高了性能，但是还是存在着问题的
 ###11.1.3.QUIC 基于 UDP 实现，是 HTTP/3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议

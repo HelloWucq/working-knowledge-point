@@ -13,9 +13,9 @@
 
 #二.架构
 ##2.1.虚拟机架构
-![](https://i.imgur.com/m0wPPxQ.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9E%B6%E6%9E%84.png)
 ##2.2.容器架构
-![](https://i.imgur.com/KJ7E1xg.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%AE%B9%E5%99%A8%E6%9E%B6%E6%9E%84.png)
 
 #三.常见术语
 ##3.1.Docker Image镜像：容器的基石；层叠的只读文件系统；联合加载；一个镜像可以放到另一个镜像的底部   对于下面的镜像成为父镜像 依次类推 直到最下面的镜像称为基础镜像
@@ -23,8 +23,8 @@
 ##3.3.Docker Registry仓库：公有与私有
 
 #四.Docker命令结构图
-![](https://i.imgur.com/v9zvZkO.png)
-![](https://i.imgur.com/D2AAYT8.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Docker%E5%91%BD%E4%BB%A4%E7%BB%93%E6%9E%84%E5%9B%BE.png)
+
 
 #五.Docker内核知识
 ##5.1.

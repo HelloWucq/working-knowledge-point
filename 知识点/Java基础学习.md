@@ -42,7 +42,7 @@
 ##九.集合
 
 ##十.Java中的锁（https://www.jianshu.com/p/68ca420adf5a）
-![](https://github.com/HelloWucq/working-knowledge-point/raw/master/学习图片/乐观锁与悲观锁.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB.jpg)
 
 ###10.1.公平锁：是指多个线程按照申请锁的顺序来获取锁
 ###10.2.非公平锁：是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象
@@ -51,7 +51,7 @@
 ###10.5.独享锁 / 共享锁
 ###10.6.互斥锁 / 读写锁
 ###10.7.乐观锁 / 悲观锁
-![](https://i.imgur.com/N6HCwfr.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/学习图片/乐观锁与悲观锁.png)
 ###10.8.我们一般有三种方式降低锁的竞争程度： 1、减少锁的持有时间 2、降低锁的请求频率 3、使用带有协调机制的独占锁，这些机制允许更高的并发性
 ###10.9.偏向锁 / 轻量级锁 / 重量级锁
 ###10.10.CAS问题
@@ -59,13 +59,13 @@
 ####10.10.2.循环时间长开销大
 ####10.10.3.只能保证一个共享变量的原子操作
 ###10.11.自旋锁与非自旋锁
-![](https://i.imgur.com/nADl45P.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%87%AA%E6%97%8B%E9%94%81%E4%B8%8E%E9%9D%9E%E8%87%AA%E6%97%8B%E9%94%81.png)
 
 #十一.基础知识
 ##11.1.this与super的区别
-![](https://i.imgur.com/pgKCpc0.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/this%E4%B8%8Esuper%E7%9A%84%E5%8C%BA%E5%88%AB.png)
 ##11.2.类关系:类关系中的组合是一种完全绑定的关秀，生命周期一致；聚合是一种可以拆分的整体与部分的关系，是非常松散的暂时组合，部分可以被拆出来给另一个整体；依赖是除组合与聚合外的类与类之间的单向弱关系，使用另一个类的属性、方法。或以其作为方法的参数输入，或以其作为方法的返回值输出，依赖往往是模块解耦的最佳点；关联即是互相平等的依赖关系，可以在关联点上进行解耦
-![](https://i.imgur.com/Pe0EQpm.jpg)
+
 ###11.2.1.继承（extends）:is-a
 ###11.2.2.实现（implement）：can-do
 ###11.2.3.组合：类是成员变量：contains-a
@@ -81,7 +81,7 @@
 ###11.3.5.Optional
 
 ##11.4.Java的异常机制
-![](https://i.imgur.com/mgMolFy.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Java%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6.png)
 
 #十五.Java基础知识总结
 ##15.1.变量：内存中的一个存储空间，用于存储常量数据（数据类型；变量名称；变量的初始化值）
@@ -114,12 +114,12 @@
 
 ##17.ThreadLocal基本知识(用于线程间的数据隔断)
 ###17.1.每个Thread类都有一个ThreadLocalMap，每个ThreadLocalMap里面都有一个Entry[] table，每个Entry就是一个键值对，key就是ThreadLocal而且是软引用，Value是普通对象是强引用，由于value无法被回收，容易造成OOM，使用完ThreadLocal之后，记得调用remove方法。
-![](https://i.imgur.com/foO3dwH.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ThreadLocal%E7%94%A8%E6%B3%95.png)
 ###17.2.ThreadLocal内部结构图
-![](https://i.imgur.com/siB3cTZ.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ThreadLocal%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84%E5%9B%BE.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ThreadLocal%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png)
 
 ##18.乐观锁与悲观锁
-![](https://i.imgur.com/bGQN7F7.jpg)
 ###18.1.悲观锁
 ###18.2.乐观锁：使用版本号机制和CAS算法实现
 
@@ -131,7 +131,7 @@
 
 
 ##20.线程状态
-![](https://i.imgur.com/l6wV9Ak.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81.png)
 
 ##21.IO模型
 ###21.1.IO一般有两个阶段：（1）数据准备阶段，磁盘文件读入到内核空间。（2）数据拷贝阶段，内核空间拷贝到用户空间
@@ -140,18 +140,17 @@
 ![](https://i.imgur.com/h1hwV0r.png)
 
 ##22.线程池基本运作流程
-![](https://i.imgur.com/8PGAF1m.png)
-![](https://i.imgur.com/pIHtOcD.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%9F%BA%E6%9C%AC%E8%BF%90%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
 #23.Java中关键字学习
 ##23.1.Synchronized原理
-![](https://i.imgur.com/FqBJ49D.jpg)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Synchronized%E5%8E%9F%E7%90%86.jpg)
 ###23.1.1.应用场景：保证线程安全，解决多线程中的并发同步问题（修饰 实例方法 / 代码块时，（同步）保护的是同一个对象方法的调用 & 当前实例对象；修饰 静态方法 / 代码块时，（同步）保护的是 静态方法的调用 & class 类对象）
 ##23.2.Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的。但是监视器锁本质又是依赖于底层的操作系统的Mutex Lock来实现的。而操作系统实现线程之间的切换这就需要从用户态转换到内核态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。
 ###23.2.volatile：内存可见性，禁止指令重排序
-![](https://i.imgur.com/UyT0qJJ.png)
+
 ###23.3.ThreadLocal内存模型
-![](https://i.imgur.com/KvIn5TG.png)
 ####23.3.1.当需要存储线程私有变量的时候，可以考虑使用ThreadLocal来实现
 ####23.3.2.当需要实现线程安全的变量时，可以考虑使用ThreadLocal来实现
 ####23.3.3.当需要减少线程资源竞争的时候，可以考虑使用ThreadLocal来实现
@@ -193,7 +192,7 @@
 
 #28.Java的对象
 ##28.1.Java的创建过程
-![](https://i.imgur.com/W32Ywkm.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Java%E7%9A%84%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B.png)
 ##28.2.对象的内存布局（对象头+实例数据+对齐填充）
 
 #29.Java的线程池
@@ -210,7 +209,7 @@
 ##29.3.使用方式
 ###29.3.1.避免使用无界队列
 ###29.3.2.明确拒绝任务是的行为
-![](https://i.imgur.com/oufMz0u.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5.png)
 ###29.3.3.获取处理结果和异常
 ##29.4.创建和开启线程的开销：为线程栈分配内存，保存每个线程方法调用的栈帧；每个栈帧包括本地变量数组、返回值、操作栈和常量池；一些 JVM 支持本地方法，也将分配本地方法栈；每个线程获得一个程序计数器，标识处理器正在执行哪条指令；系统创建本地线程，与 Java 线程对应；和线程相关的描述符被添加到 JVM 内部数据结构；线程共享堆和方法区
 
@@ -225,7 +224,7 @@
 ###31.2.尽量避免过多的创建Java对象
 ###31.3.尽量使用final修饰符
 #32.sleep()、yield()和wait()的区别
-![](https://i.imgur.com/pYJqRth.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/sleep()%E3%80%81yield()%20%E5%92%8C%20wait()%20%E7%9A%84%E5%8C%BA%E5%88%AB.png)
 
 #32.CAS：CAS有三个操作数：内存值V、旧的预期值A、要修改的值B，当且仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做并返回false。
 

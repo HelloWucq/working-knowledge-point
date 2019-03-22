@@ -1,10 +1,10 @@
 #一.内存区域（可见性、原子性、有序性）
-![](https://i.imgur.com/nb0Aa2l.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Java%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
 ##1.程序计数器：当前线程所执行的字节码的行号指示器，没有OutOfMemoryError情况
 ##2.Java虚拟机栈：线程私有，描述Java方法执行的内存模型；每个方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法出口
 ###2.1.局部变量表：编译期可知的各种基本数据类型、对象引用、和returnAddress类型
 ###2.2.栈帧
-![](https://i.imgur.com/hv3TbL7.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%A0%88%E5%B8%A7%E7%9A%84%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
 ###2.3.操作数栈：用于保存计算过程的中间结果，同时作为计算过程中变量临时的存储空间
 ###2.4.帧数据区:访问常量池的指针，方便程序访问常量池
 ##3.本地方法栈：为虚拟机中使用Native方法服务
@@ -13,7 +13,6 @@
 ###5.1.如果系统使用了动态代理，运行时可能产生大量的类，需要设置一个合理的永久区大小
 ##6.运行时常量池：方法区的一部分
 ##7.直接内存
-![](https://i.imgur.com/yGFurjd.png)
 
 
 #二.内存布局
@@ -56,7 +55,7 @@
 ##5.空间分配担保
 
 #垃圾收集器
-![](https://i.imgur.com/1QMbTR2.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8.png)
 
 #八.JDK监控与故障处理工具
 ##1.jps显示指定系统内所有的虚拟机进程
@@ -120,7 +119,7 @@
 ###14.4.动态年龄判断 ，大于等于某个年龄的对象超过了survivor空间一半 ，大于等于某个年龄的对象直接进入老年代
 
 #十五.Java内存模型（缓存一致性问题以及指令重排序问题）
-![](https://i.imgur.com/M26IUYm.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/JMM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png)
 
 #十六.ClassLoader（委托、可见性、单一性）
 ##16.1.加载阶段

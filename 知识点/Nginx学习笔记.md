@@ -1,6 +1,6 @@
 #一.进程模型
 ##1.1.nginx使用一个多进程模型来对外提供服务，其中一个master进程，多个worker进程。master进程负责管理nginx本身和其他worker进程
-![](https://i.imgur.com/poRoscZ.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/nginx%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B.png)
 ##1.2.特点
 ###1.2.1.对于每个worker进程来说，独立的进程，不需要加锁，所以省掉了锁带来的开销，同时在编程以及问题查找时，也会方便很多
 ###1.2.2.采用独立的进程，可以让互相之间不会影响，一个进程退出后，其它进程还在工作，服务不会中断，master进程则很快启动新的worker进程。当然，worker进程的异常退出，肯定是程序有bug了，异常退出，会导致当前worker上的所有请求失败，不过不会影响到所有请求，所以降低了风险
@@ -15,7 +15,7 @@
 
 
 #Nginx配置文件的整体结构
-![](https://i.imgur.com/MKFUj1U.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84.png)
 
 ##3.1.全局块
 ###3.1.1.配置运行Nginx服务器用户（组）
@@ -56,7 +56,6 @@
 
 ##3.2.request:在nginx中我们指的是http请求，具体到nginx中的数据结构是ngx_http_request_t。ngx_http_request_t是对一个http请求的封装。 我们知道，一个http请求，包含请求行、请求头、请求体、响应行、响应头、响应体
 ###3.2.1.处理请求的过程：
-![](https://i.imgur.com/CMJNaCy.png)
 ##3.3.keepalive:一般来说，当客户端的一次访问，需要多次访问同一个server时，打开keepalive的优势非常大，比如图片服务器，通常一个网页会包含很多个图片。打开keepalive也会大量减少time-wait的数量。
 
 
@@ -83,7 +82,6 @@
     	ngx_pool_cleanup_t   *cleanup;
     	ngx_log_t            *log;
 	};
-![](https://i.imgur.com/VLzPSp3.png)
 ##4.3.ngx_array_t（数组结构）
 	typedef struct ngx_array_s       ngx_array_t;
 	struct ngx_array_s {
@@ -184,7 +182,6 @@
 	
 	    /* STUB */ int   num;
 	};
-![](https://i.imgur.com/SnN2VAo.png)
 ##4.10.ngx_list_t:ngx_list_t的节点实际上是一个固定大小的数组
     typedef struct {
     	ngx_list_part_t  *last; //指向该链表的最后一个节点
@@ -305,7 +302,7 @@
 ##10.1.数据转发功能，为nginx提供了跨越单机的横向处理能力，使nginx摆脱只能为终端节点提供单一功能的限制，而使它具备了网路应用级别的拆分、封装和整合的战略功能
 ##10.2.upstream属于handler，只是他不产生自己的内容，而是通过请求后端服务器得到内容；请求并取得响应内容的整个过程已经被封装到nginx内部，所以upstream模块只需要开发若干回调函数，完成构造请求和解析响应等具体的工作。
 ##10.3.模块接口
-![](https://i.imgur.com/2b2rUv0.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/upstream%E7%9A%84%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3.png)
 ##10.4.操作流程
 ###10.4.1.创建upstream数据结构
 ###10.4.2.设置模块的tag和schema。schema现在只会用于日志，tag会用于buf_chain管理
@@ -355,4 +352,4 @@
 
 #十一.注意
 ##11.1.反向代理：以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
-![](https://i.imgur.com/rmGxatD.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.png)

@@ -1,5 +1,5 @@
 #一.Kubernetes架构图
-![](https://i.imgur.com/kyRW1Mj.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/k8s%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 ##1.1.Pod:包含一组容器和卷。同一个Pod里的容器共享同一个网络命名空间，可以使用localhost互相通信。Pod是短暂的，不是持续性实体。
 ###1.1.1.Pod是短暂的，那么我怎么才能持久化容器数据使其能够跨重启而存在呢？ 是的，Kubernetes支持卷的概念，因此可以使用持久化的卷类型。
 ###1.1.2.是否手动创建Pod，如果想要创建同一个容器的多份拷贝，需要一个个分别创建出来么？可以手动创建单个Pod，但是也可以使用Replication Controller使用Pod模板创建出多份拷贝
@@ -33,7 +33,7 @@
 ###3.2.3.Docker Engine ( docker ) : Docker 引 擎，负责本机的容器创建和管理工作。
 
 ##3.3.Pod
-![](https://i.imgur.com/lEib1IU.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Pod%E7%9A%84%E7%BB%84%E6%88%90.png)
 ### Pause 容器对应的镜像属于 Kubemetes平台的一部分
 
 ##3.4.Label与Label Selector
@@ -52,7 +52,7 @@
 ##3.8.StatefulSet:针对一些有状态的服务
 
 ##3.9.Service
-![](https://i.imgur.com/2X4elaU.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Pod%2CRC%E4%B8%8EService%E7%9A%84%E5%85%B3%E7%B3%BB.png)
 ###3.9.2.Kubernetes的服务发现机制：DNS系统
 ###3.9.3.外部系统访问Service的问题
 ###Node IP :是 Kubemetes 集群中每个节点 的物理网卡的 IP 地址，这是一个真实存在的物理网络，所有属于这个网络的服务器之间都能通过这个网络直接通信，不管它们中是否有部分节点不属于这个 Kubemetes 集群。这也表明了 Kubemetes 集群之外的节点访问 Kubemetes 集群之内的某个节点或者 TCP/IP 服务时，必须要通过 Node IP 进行通信。

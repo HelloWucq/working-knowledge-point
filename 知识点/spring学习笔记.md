@@ -11,7 +11,7 @@
 ##2.4.BeanFactory
 ##2.5.ApplicationContext
 ##2.6.Bean的生命周期
-![](https://i.imgur.com/hS71V89.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
 ###2.6.1.BeanFactory中Bean的生命周期
 ###2.6.2.ApplicationContext中Bean的生命周期
 ##2.7.Bean的元数据信息（Bean的实现类；Bean的属性信息;Bean的依赖关系;Bean的行为配置）
@@ -95,7 +95,7 @@
 
 
 #十.Spring的事务管理
-![](https://i.imgur.com/QayAfqr.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90%E6%97%B6%E5%BA%8F%E5%9B%BE.png)
 ##10.1.ThreadLocal:不是一个线程，而是保存线程本地化对象的容器，以“空间换时间”，访问并行化，对象独享化
 ###10.2.1.通过声明式事务处理，将事务处理的过程和业务代码分离
 ###10.2.2.应用在选择数据源是可能会采用不同的方案，Spring在应用和具体的数据源之间，搭建一个中间平台，解耦应用与数据源的绑定
@@ -212,4 +212,4 @@
 ###责任链模式解决的问题：把一套流程拆分成不同的Handler，使用的时候根据业务场景拼装，可以非常灵活和低耦合的实现特定的业务流程。
 
 ##13.Spring MVC执行流程
-![](https://i.imgur.com/SK2hOPN.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Spring%20MVC%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png)

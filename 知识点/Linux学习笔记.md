@@ -180,13 +180,13 @@
 ###12.3.7.文件差异并修补（diff/patch）
 ###12.3.8.打印目录树：tree
 ###12.3.9.文件类型
-![](https://i.imgur.com/b69jrl5.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B.png)
 ###12.3.10.文件时间戳
-![](https://i.imgur.com/WqqF0md.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%97%B6%E9%97%B4%E6%88%B3.png)
 
 ##12.4.操作文本
 ###12.4.1.正则表达式
-![](https://i.imgur.com/HjmpzQs.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png)
 ###12.4.2.grep在文件中搜索文本
 ###12.4.3.cut按列切分文件（每列成为一个字段）
 ###12.4.4.sed进行文本替换

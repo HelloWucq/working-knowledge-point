@@ -67,9 +67,9 @@
 
 #三.原理
 ##3.1.B树
-![](https://i.imgur.com/u45PMfF.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/B-tree%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png)
 ##3.1.B+树
-![](https://i.imgur.com/o6cXbqj.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/B%2Btree%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png)
 ###3.1.1.只有最底层的节点（叶子节点）才保存信息（相关表的行位置）
 ###3.1.2.其它节点只是在搜索中用来指引到正确节点的。
 ###3.1.3.最底层的节点是跟后续节点相连接的
@@ -111,14 +111,14 @@
 
 #四.InnoDB技术原理详解
 ##4.1.体系架构
-![](https://i.imgur.com/8t94sNd.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/InnoDB%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png)
 ##4.2.后台线程：多线程模型，负责处理不同的任务
 ###4.2.1.Master Thread:负责将缓冲池中的数据异步刷新到磁盘，保证数据的一致性
 ###4.2.2.IO Thread:使用了AIO来处理写IO请求，IO Thread主要负责这些IO请求的回调处理
 ###4.2.3.Purge Thread:回收已经使用并分配的undo页
 ###4.2.4.Page Cleaner Thread:脏页的刷新操作放到单独的线程完成
 ##4.3.内存：基于磁盘存储的，并将其中的记录按照页的方式进行管理
-![](https://i.imgur.com/x3zS6p4.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/InnoDB%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1.png)
 ###4.3.1.缓冲池：
 ###4.3.2.LRU List,Free List和Flush List:管理内存区域
 ###4.3.3.重做日志缓冲：
@@ -130,7 +130,7 @@
 ##4.6.关键特性：
 ###4.6.1.插入缓冲：对于非聚集索引的插入或更新操作，不是每一次直接插入到索引页，而是先判断插入的非聚集索引页是否在缓冲池中，若在，则直接插入，若不在，则先放入到一个Insert Buffer对象中（1）条件：1）索引是辅助索引；2）索引不是唯一的
 ###4.6.2.两次写（部分写导致失效）：保证数据页的可靠性
-![](https://i.imgur.com/7YlpEQm.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E4%B8%A4%E6%AC%A1%E5%86%99%E6%9E%B6%E6%9E%84.png)
 ###4.6.3.自适应哈希索引：自动根据访问的频率与模式来自动的为某些热点页建立哈希索引
 ###4.6.4.异步IO
 ###4.6.5.刷新邻接页：对于传统的机械硬盘建议开启该项功能，对于固态硬盘有着超高的IOPS性能的磁盘，建议将该参数设置为0，即关闭该特性
@@ -143,12 +143,11 @@
 ##5.5.表结构定义文件
 ##5.6.InnoDB存储引擎文件
 ###5.6.1.表空间文件：
-![](https://i.imgur.com/DrBms6i.png)
 ###5.6.2.重做日志文件
 
 #六.表
 ##6.1.逻辑存储结构：
-![](https://i.imgur.com/jfHZZRx.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/InnoDB%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png)
 ###6.1.1.表空间：存放的只是数据、索引和插入缓冲Bitmap页，其他类的数据还是存放在原来的共享表空间内
 ###6.1.2.段：数据段；索引段；回滚段
 ###6.1.3.区：有连续页组成，在任何情况下每个区大小都为1MB
@@ -156,7 +155,7 @@
 ###6.1.5.行：行记录格式（Compact/Redundant）
 
 ##6.2.数据页结构：
-![](https://i.imgur.com/0vY2S8h.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84.png)
 ##6.3.约束：
 ##6.4.视图（被用作一个抽象装置，对于一些应用程序，程序本身不需要关心基表的结构，只需要按照视图定义来取数据或更新数据）：命名的虚表，视图中的数据没有实际的物理存储
 ##6.5.分区表：（RANGE分区；LIST分区；HASH分区；KEY分区）
@@ -173,7 +172,7 @@
 
 #八.锁
 ##8.1.lock与latch的区别
-![](https://i.imgur.com/ViLbLRM.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Lock%E4%B8%8Elatch%E7%9A%84%E5%8C%BA%E5%88%AB.png)
 ##8.2.锁类型：行级锁（共享锁；排它锁）
 ##8.3.锁算法：（Record Lock/Gap Lock/Next-Key Lock）
 ##8.4.锁问题（脏读；不可重复读；丢失更新）
@@ -190,7 +189,7 @@
 ###9.3.1.每秒请求数（QPS）
 ###9.3.2.每秒事务处理的能力（TPS）
 ##9.4.分布式事务：使用分布式事务时，InnoDB的事务隔离级别必须设置为SERIALIZABLE
-![](https://i.imgur.com/Aqfut2u.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%9E%8B.png)
 ##9.5.不好的事务习惯：
 ###9.5.1.在循环中提交
 ###9.5.2.使用自动提交
@@ -212,9 +211,9 @@
 ###11.1.1.作用：1）增强数据的集成度；2）增强容错功能；3）增加处理量或容量
 ##11.2.[http://www.hack520.com/169.html](http://www.hack520.com/169.html "RAID")
 ##11.3.MySQL查询过程
-![](https://i.imgur.com/jOUUdW8.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MySQL%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B.png)
 ##11.4.数据库优化维度
-![](https://i.imgur.com/soFRn8W.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E7%BB%B4%E5%BA%A6.png)
 #注意事项
 ###1.存储引擎是基于表的，而不是数据库
 ###2.约束更是一个逻辑的概念，用来保证数据的完整性，而索引是一个数据结构，既有逻辑上的概念，在数据库中还代表着物理存储的方式
@@ -222,9 +221,9 @@
 ###4.B+树索引能找到的只是被查找数据行所在的页，然后数据库通过把页读入到内存，再在内存中进行查找，最后得到要查找的数据
 
 #十二.基本架构
-![](https://i.imgur.com/3rt5XQY.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MySQL%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84.png)
 ##12.1.查询流程
-![](https://i.imgur.com/JrgqHZb.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MySQL%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B.png)
 
 #十三.基本知识
 ##13.1.索引的目的：在大数据量的查询中提升查询速度,避免全表扫描

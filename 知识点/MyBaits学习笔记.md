@@ -117,12 +117,12 @@
 ###4.6.1.级联查询
 
 ##4.7.缓存cache：[https://www.jianshu.com/p/c553169c5921](https://www.jianshu.com/p/c553169c5921)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBaits%E7%9A%84%E7%BC%93%E5%AD%98.png)
 ###4.7.1.一级缓存（只是相对于同一个SqlSession而言）
-![](https://i.imgur.com/m7snYsJ.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBaits%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE.png)
 ###4.7.2.二级缓存：实现二级缓存时，Mybatis要求返回的POJO必须可序列化
-![](https://i.imgur.com/TqtVyyR.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Mybaits%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 ###4.7.3.自定义缓存
-![](https://i.imgur.com/6gqv5NY.png)
 
 
 
@@ -169,7 +169,7 @@
 ##8.5.上传文件到服务器
 
 #九.Mybaits流程
-![](https://i.imgur.com/rnuPy0q.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Mybaits%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 
 

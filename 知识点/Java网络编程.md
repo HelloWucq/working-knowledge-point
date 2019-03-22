@@ -99,7 +99,7 @@
 
 
 #十.Tomcat请求流程
-![](https://i.imgur.com/i84OK28.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Tomcat%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B.png)
 ##10.1.Acceptor 线程组。用于接受新连接，并将新连接封装一下，选择一个 Poller 将新连接添加到 Poller 的事件队列中。
 ##10.2.Poller 线程组。用于监听 Socket 事件，当 Socket 可读或可写等等时，将 Socket 封装一下添加到 worker 线程池的任务队列中.
 ##10.3.worker 线程组。用于对请求进行处理，包括分析请求报文并创建 Request 对象，调用容器的 pipeline 进行处理。
@@ -125,7 +125,7 @@
 ###11.4.5.动态扩容；数据多备；自动容灾
 
 #十二.从输入url到页面加载完成发生了什么
-![](https://i.imgur.com/lQUwSyA.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/URL%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png)
 
 
 
@@ -135,4 +135,4 @@
 ##3.粘包问题：当在短时间内发送很多数据量小的包时，底层会根据一定的算法（Nagle）把一些包合作一个包发送
 
 ##4.HTML5离线缓存工作流程
-![](https://i.imgur.com/IKpaPIw.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/HTML5%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)

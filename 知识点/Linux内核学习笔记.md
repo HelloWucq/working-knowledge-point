@@ -1,15 +1,15 @@
 #一.基本知识
-![](https://i.imgur.com/itdbFwZ.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Linux%E5%86%85%E6%A0%B8.png)
 ##1.1.进程
 ###1.1.1.fork:创建当前进程的一个副本。写时复制技术
 ###1.1.2.exec:将一个新程序加载到当前进程的内存中并执行
 ###1.1.3.命名空间
 ##1.2.虚拟地址空间（内核空间/用户空间）
 ##1.3.特权级别
-![](https://i.imgur.com/6HLOtqn.png)
+
 ##1.4.地址空间
 ###1.4.1.物理内存页称为页帧，虚拟地址空间称为页；将虚拟地址空间映射到物理地址空间的数据结构成为页表
-![](https://i.imgur.com/ahNwhus.png)
+
 ###1.4.2.MMU(内存管理单元)优化内存访问操作；TLB（地址转换后备缓冲器）
 ##1.5.物理内存的分配
 ###1.5.1.伙伴系统
@@ -25,7 +25,7 @@
 ##1.7.字符设备和块设备
 ##1.8.网络
 ##1.9.文件系统
-![](https://i.imgur.com/vvUKlOd.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
 ##1.10.缓存：由于内核是通过基于页的内存映射来实现访问块设备的，因此缓存也按页组织，也就是说整页都缓存起来，故称为页缓存
 
 
@@ -36,9 +36,9 @@
 ###2.1.3.用户请求创建一个新进程
 ###2.1.4.一个批处理作业的初始化
 ##2.2.进程与线程
-![](https://i.imgur.com/jsJyZ5r.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%BF%9B%E7%A8%8B%E7%8E%AF%E5%A2%83.png)
 ##2.1.进程生命周期：
-![](https://i.imgur.com/eqR0RUy.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%BF%9B%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
 ##2.2.进程管理
 ###2.2.1.进程复制（写时复制技术）
 ###2.2.2.内核线程
@@ -49,12 +49,12 @@
 ###2.3.2.CPU消耗vsI/O消耗
 ###2.3.3.分配vs占据
 ###2.3.4.隔离vs共享
-![](https://i.imgur.com/3bDEq9G.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E8%BF%9B%E7%A8%8B.png)
 
 
 
 #三.内存管理(https://www.jianshu.com/p/5d386ab54aac)
-![](https://i.imgur.com/nl17JhX.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98.png)
 
 #四.进程虚拟内存
 ##4.1.进程地址空间布局
@@ -70,7 +70,7 @@
 ###4.2.3.内核会检查负责缺页区域的进程地址空间数据结构，找到适当的后备存储器，或者确认该访问实际上是不正确的
 ###4.2.4.分配物理内存页，并从后备存储器读取所需数据填充
 ###4.2.5.借助于页表将物理内存页并入到用户进程的地址空间，应用程序恢复执行
-![](https://i.imgur.com/XFOg2c8.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BC%93%E5%AD%98.png)
 
 
 #五.锁与进程间的通信
@@ -100,6 +100,6 @@
 ###5.6.6.套接字
 
 #六.虚拟文件系统
-![](https://i.imgur.com/F7hlBMs.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
 
 #七.网络

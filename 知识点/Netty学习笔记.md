@@ -1,5 +1,5 @@
 #一.简介
-![](https://i.imgur.com/ohA0PRG.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Netty%E8%AF%A6%E8%A7%A3.png)
 ##1.1.Netty是一款异步的事件驱动的网络应用程序框架，支持快速的开发可维护的高性能的面向协议的服务器和客户端
 ##1.2.核心组件：Channel、回调、Future、事件和ChannelHandler
 ###1.2.1.Channel：代表一个实体（如一个硬件设备、一个文件、一个网络套接字或者一个能够执行一个或多个不同的I/O操作的程序组件）的开放连接，如读/写操作
@@ -7,7 +7,7 @@
 ###1.2.3.Future：提供另一种在操作完成是通知应用程序的方法；可以看作一个异步操作的结果的占位符
 ###1.2.4.事件与ChannelHandler(记录日志；数据转换；流控制；应用程序逻辑)
 ##1.3.Reactor模型
-![](https://i.imgur.com/pp2Ehqh.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Reactor%E6%A8%A1%E5%9E%8B.png)
 #二.基本流程
 ##2.1.服务器编写
     package com.gerry.netty.server;
