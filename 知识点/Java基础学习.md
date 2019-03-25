@@ -179,7 +179,7 @@
 ##26.2.答：因为wait()的线程永远不能确定其他线程会在什么状态下notify()，所以必须在被唤醒、抢占到锁并且从wait()方法退出的时候再次进行指定条件的判断，以决定是满足条件往下执行呢还是不满足条件再次wait()呢
 
 
-#27.Object中的方法
+#27.Object中的方法（[https://segmentfault.com/a/1190000014710646](https://segmentfault.com/a/1190000014710646)）
 ###27.1.clone()
 ###27.2.getClass()获取对象的class
 ###27.3.equals() 对象值比较,重写equals方法必须重写hashcode，对象的约定，例如不重写，hashMap的kv不一致；

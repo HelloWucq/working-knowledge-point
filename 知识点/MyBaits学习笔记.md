@@ -170,6 +170,13 @@
 
 #九.Mybaits流程
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Mybaits%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+- 通过Reader对象读取Mybatis映射文件
+- 通过SqlSessionFactoryBuilder对象创建SqlSessionFactory对象
+- 获取当前线程的SQLSession
+- 事务默认开启
+- 通过SQLSession读取映射文件中的操作编号，从而读取SQL语句
+- 提交事务
+- 关闭资源
 
 
 
