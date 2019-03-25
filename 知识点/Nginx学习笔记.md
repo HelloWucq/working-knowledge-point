@@ -353,3 +353,10 @@
 #十一.注意
 ##11.1.反向代理：以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.png)
+
+
+#十二.Nginx的组成
+##12.1.Nginx二进制可执行文件：每个模块源码编译出的一个文件
+##12.2.Nginx.conf配置文件：控制Nginx的行为
+##12.3.access.log访问日志：记录每一条http请求信息
+##12.4.error.log错误日志：定位问题
