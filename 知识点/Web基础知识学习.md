@@ -205,7 +205,8 @@
 ###13.1.4.logs：存放日志，当我们需要查看日志的时候，可以查询信息
 ###13.1.5.webapps：放置我们的web应用
 ###13.1.6.work工作目录：该目录用于存放jsp被访问后生成对应的server文件和.class文件
-
+##13.2.web站点的目录
+![](https://github.com/HelloWucq/working-knowledge-point/blob/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Web%E7%AB%99%E7%82%B9%E7%9B%AE%E5%BD%95.png)
 
 
 
