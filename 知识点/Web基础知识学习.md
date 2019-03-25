@@ -194,6 +194,17 @@
 - Headers – 可选的。
 - Body – 必须的。在body部分，包含要执行的服务器的方法。和发送到服务器的数据。
 
+#十三.Tomcat(一个运行JAVA的网络服务器)
+##13.1.目录文件
+###13.1.1. bin：启动和关闭tomcat的bat文件
+###13.1.2.conf:配置文件
+- server.xml该文件用于配置server相关的信息，比如tomcat启动的端口号，配置主机(Host)
+- web.xml文件配置与web应用（web应用相当于一个web站点）
+- tomcat-user.xml配置用户名密码和相关权限.
+###13.1.3.lib：该目录放置运行tomcat运行需要的jar包
+###13.1.4.logs：存放日志，当我们需要查看日志的时候，可以查询信息
+###13.1.5.webapps：放置我们的web应用
+###13.1.6.work工作目录：该目录用于存放jsp被访问后生成对应的server文件和.class文件
 
 
 

@@ -37,8 +37,9 @@
 
 
 #四.事件处理（事件驱动（I/O多路复用））
-##4.1.文件事件
-##4.2.时间事件
+##4.1.文件事件:将所有产生事件的Socket放到一个队列中
+![](https://github.com/HelloWucq/working-knowledge-point/blob/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Redis%E6%96%87%E4%BB%B6%E4%BA%8B%E4%BB%B6.png)
+##4.2.时间事件：放在一个链表中（周期性事件；定时事件）
 #五.redis的通信协议
 #六.单机服务器
 ##6.1.内存释放策略：1）LRU：优先删除最近最少使用的键；2）TTL：优先删除生存时间最短的键；3）ANDOM：随机删除
