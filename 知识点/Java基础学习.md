@@ -190,6 +190,24 @@
 ###27.8.wait() 线程等待
 ###27.9.finalize() 基本没啥用，垃圾回收前调用的方法
 
+
+##注意
+- equals（）用来判断两个对象是否相等
+	1. 若某各类没有覆盖equals()方法，当通过equals()比较两个对象时，实际上是比较两个对象是否是一个对象
+	2. 当覆盖类的equals()方法时，使用equals()比较两个对象是否相等，通常的做法是：若两个对象的内容相等，则equals()方法放回true，否则返回false
+- hashCode()确定该对象在哈希表中的索引位置（只有在散列表中才有用，在其他情况下没用）
+	1. 如果两个对象相等，那么它们的hashCode()值一定要相同；
+	2. 如果两个对象hashCode()相等，它们并不一定相等。注意：这是在散列表中的情况。在非散列表中一定如此！
+
+
+
+
+
+
+
+
+
+
 #28.Java的对象
 ##28.1.Java的创建过程
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Java%E7%9A%84%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B.png)

@@ -360,3 +360,6 @@
 ##12.2.Nginx.conf配置文件：控制Nginx的行为
 ##12.3.access.log访问日志：记录每一条http请求信息
 ##12.4.error.log错误日志：定位问题
+
+#十三.Nginx的请求处理流程
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Nginx%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
