@@ -117,5 +117,91 @@
 - ENV <key\>=<value\> ...
 
 
+###8.2.8.ADD
+- 一个复制命令，将文件复制到镜像中
+###语法
+- ADD <src\>... <dest\>
+- ADD ["<src\>",... "<dest\>"]
+###注意
+- <dest\>路径的填写可以是容器内的绝对路径，也可以是相对于工作目录的相对路径
+- <src\>可以是一个本地文件或者是一个本地压缩文件，还可以是一个url
+- 如果把<src\>写成一个url，那么ADD就类似于wget命令
+- 尽量不要把<src\>写成一个文件夹，如果<src\>是一个文件夹了，复制整个目录的内容,包括文件系统元数据
+###8.2.9.COPY
+- 复制命令
+###语法
+- COPY <src\>... <dest\>
+- COPY ["<src\>",... "<dest\>"]
+###与ADD的区别
+-  COPY的<src>只能是本地文件，其他用法一致
+###8.2.10.ENTRYPOINT
+- 启动时的默认命令
+###语法
+- ENTRYPOINT ["executable", "param1", "param2"]
+- ENTRYPOINT command param1 param2
+
+###与CMD比较说明
+####相同点
+- 只能写一条，如果写了多条，那么只有最后一条生效
+- 容器启动时才运行，运行时机相同
+
+####不同点
+- ENTRYPOINT不会被运行的command覆盖，而CMD则会被覆盖
+- 如果我们在Dockerfile种同时写了ENTRYPOINT和CMD，并且CMD指令不是一个完整的可执行命令，那么CMD指定的内容将会作为ENTRYPOINT的参数
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ENTRYPOINT%20%E5%92%8CCMD%E4%B8%8D%E5%90%8C%E7%BB%84%E5%90%88%E7%9A%84%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5.png)
+
+###8.2.11.VOLUME
+- 实现挂载功能，可以将本地文件夹或其他容器中的文件夹挂载到这个容器中
+###语法
+- VOLUME ["/data"]
+
+###注意
+- ["/data"]可以是一个JsonArray ，也可以是多个值。
+
+
 #注意
 - 容器技术是和宿主机共享硬件资源及操作系统，可以实现资源的动态分配
+- 一般的使用场景为需要持久化存储数据时
+- 容器使用的是AUFS，这种文件系统不能持久化数据，当容器关闭后，所有的更改都会丢失，所以数据需要持久化时用这个命令
+
+###8.2.12.USER
+- 设置启动容器的用户，可以是用户名或UID
+###语法
+- USER daemo
+- USER UID
+###注意
+- 如果设置了容器以daemon用户去运行，那么RUN, CMD 和 ENTRYPOINT 都会以这个用户去运行
+
+###8.2.13.WORKDIR
+- 设置工作目录，对RUN,CMD,ENTRYPOINT,COPY,ADD生效。如果不存在则会创建，也可以设置多次。
+###语法
+- WORKDIR /path/to/workdir
+
+###8.2.13.ARG
+- 设置变量命令，ARG命令定义了一个变量，在docker build创建镜像的时候，使用--build-arg <varname\>=<value\>来指定参数
+
+###8.2.14.ONBUILD
+- 这个命令只对当前镜像的子镜像生效。
+###语法
+- ONBUILD [INSTRUCTION]
+
+###8.2.15.STOPSIGNAL
+- 当容器退出时给系统发送什么样的指令
+###语法
+- STOPSIGNAL signal
+
+
+
+###8.2.16.HEALTHCHECK
+- 容器健康状况检查命令
+###语法
+- HEALTHCHECK [OPTIONS] CMD command
+	- [OPTIONS]的选项支持以下三中选项：	
+		- interval=DURATION 两次检查默认的时间间隔为30秒
+		- timeout=DURATION 健康检查命令运行超时时长，默认30秒
+		- retries=N 当连续失败指定次数后，则容器被认为是不健康的，状态为unhealthy，默认次数是3
+- HEALTHCHECK NONE
+###注意
+- 第一个的功能是在容器内部运行一个命令来检查容器的健康状况
+- 第二个的功能是在基础镜像中取消健康检查命令
+- HEALTHCHECK命令只能出现一次，如果出现了多次，只有最后一个生效
