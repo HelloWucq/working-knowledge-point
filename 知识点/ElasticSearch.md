@@ -56,3 +56,7 @@
 - Node 3 从主分片检索文档，修改 _source 字段中的 JSON ，并且尝试重新索引主分片的文档。 如果文档已经被另一个进程修改，它会重试步骤 3 ，超过 retry_on_conflict 次后放弃。 
 - 如果 Node 3 成功地更新文档，它将新版本的文档并行转发到 Node 1 和 Node 2 上的副本分片，重新建立索引。 一旦所有副本分片都返回成功， Node 3 向协调节点也返回成功，协调节点向客户端返回成功。
 ##5.6.多文档模式
+###5.6.1.使用 mget 取回多个文档
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E4%BD%BF%E7%94%A8mget%E5%8F%96%E5%9B%9E%E5%A4%9A%E4%B8%AA%E6%96%87%E6%A1%A3.png)
+- 客户端向 Node 1 发送 mget 请求。 
+- Node 1 为每个分片构建多文档获取请求，然后并行转发这些请求到托管在每个所需的主分片或者副本分片的节点上。一旦收到所有答复， Node 1 构建响应并将其返回给客户端。
