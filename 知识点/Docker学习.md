@@ -24,7 +24,8 @@
 
 #四.Docker命令结构图
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Docker%E5%91%BD%E4%BB%A4%E7%BB%93%E6%9E%84%E5%9B%BE.png)
-
+##4.1.Docker容器的生命周期
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/docker%E5%AE%B9%E5%99%A8%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
 
 #五.Docker内核知识
 ##5.1.数据卷：一个可供容器使用的特殊目录，他将主机操作系统目录直接映射到容器
@@ -33,7 +34,11 @@
 - 对数据卷的更新不会影响镜像，解耦开应用和数据
 - 卷会一直存在，直到没有容器使用，可以安全地卸载他
 
-
+##5.2.网络核心管理
+###5.2.1.host模式：如果启动容器的时候使用host模式，那么这个容器将不会获得一个独立的Network Namespace 而是和宿主机器共用一个Network Namespace 容器将不会虚拟出自己的网卡，配置自己的IP等，而是使用宿主机的ip和端口，但是容器的其他方面，如文件系统，进程列表等还是和宿主机器隔离的
+###5.2.2.container模式：Container模式指定新创建的容器和已经存在的一个容器共享一个Network Namespace，而不是和宿主机器共享。新创建的容器不会创建自己的网卡，配置自己的IP，而是和一个指定的容器共享IP，端口范围等。同样，两个容器除了网络方面，其他的如文件系统，进程列表等还是隔离的。两个容器的进程可以通过localhost网卡设备通信
+###5.2.3.none模式：  使用none模式，docker容器拥有自己的Network Namespace，但是，并不为docker容器进行任何网络配置，也就是说，这个docker容器没有网卡，ip，路由等信息。需要我们自己为docker容器添加网卡，配置ip等
+###5.2.4.bridge模式：此模式会为每一个容器分配Network Namespace，设置ip等，并将一个主机上的docker容器连接到一个虚拟网桥上
 
 #六.Docker组件
 ##6.1.Docker客户端和服务器，也称为Docker引擎
