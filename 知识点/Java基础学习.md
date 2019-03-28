@@ -113,11 +113,215 @@
 ##16.软引用与强引用（软引用只在创建和FGC之前有效，FGC之后，不管有没有继续引用，都直接释放内存的一种机制）
 
 ##17.ThreadLocal基本知识(用于线程间的数据隔断)
+- ThreadLocal 是多线程都需要使用一个变量，但是这个变量的值不需要各个线程间共享，每个线程都有自己的这个变量的值。
 ###17.1.每个Thread类都有一个ThreadLocalMap，每个ThreadLocalMap里面都有一个Entry[] table，每个Entry就是一个键值对，key就是ThreadLocal而且是软引用，Value是普通对象是强引用，由于value无法被回收，容易造成OOM，使用完ThreadLocal之后，记得调用remove方法。
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ThreadLocal%E7%94%A8%E6%B3%95.png)
 ###17.2.ThreadLocal内部结构图
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ThreadLocal%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84%E5%9B%BE.png)
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ThreadLocal%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png)
+###17.3.ThreadLocal源码分析([https://juejin.im/post/5a5efb1b518825732b19dca4](https://juejin.im/post/5a5efb1b518825732b19dca4))
+####17.3.1.成员属性
+    public class ThreadLocal<T> {
+    /**
+     * 自定义哈希码(ThreadLocalMaps的),降低哈希冲突
+     */
+    	private final int threadLocalHashCode = nextHashCode();
+
+    /**
+     * 生成下一个哈希码的hashCode,操作是原子的,从0开始
+     */
+    	private static AtomicInteger nextHashCode =
+        new AtomicInteger();
+
+    /**
+     * 连续分配的两个ThreadLocal实例的threadLocalHashCode值的增量
+     */
+    	private static final int HASH_INCREMENT = 0x61c88647;
+
+    /**
+     * 返回下一个哈希码的hashCode,此方法是一个原子类不停地去加上斐波那契散列数,使得哈希值分布均匀
+     */
+    	private static int nextHashCode() {
+        	return nextHashCode.getAndAdd(HASH_INCREMENT);
+    	}
+
+	}
+####17.3.2.方法
+- ThreadLocal 实例本身是不存储值，它只是提供了一个在当前线程中找到副本值的key(它自己就是ThreadLocalMap的key)
+- 是ThreadLocal包含在Thread中，而不是Thread包含在 ThreadLocal 中
+		  
+		/**
+     	* 此方法第一次调用发生在当线程通过 {@link #get} 方法访问此线程的ThreadLocal值时
+     	* 除非线程先调用了 {@link #set}，在这种情况下,{@code initialValue} 方法才不会被这个线程调用
+     	* 通常情况下,每个线程最多调用1次这个方法,但是也可能再次调用,比如 {@link #remove} 被调用后,调用get
+     	* 这个方法仅仅简单返回null{@code null}; 如果程序想要它返回除了null之外的初始值,必须继承重写此方法,
+     	* 通常使用匿名内部类的方式实现
+     	* @return 返回当前ThreadLocal的初始值 null
+     	*/
+    	protected T initialValue() {
+       	 	return null;
+    	}
+
+    	/**
+     	* 返回当前线程中保存ThreadLocal的值
+     	* 如果当前线程没有此ThreadLocal则通过 {@link #initialValue}方法进行初始化值
+     	* @return 
+     	*/
+    	public T get() {
+        	// 获取当前线程对象
+        	Thread t = Thread.currentThread();
+        	// 获取此线程对象中维护的`ThreadLocalMap`对象
+        	ThreadLocalMap map = getMap(t);
+        	// 如果Map存在
+        	if (map != null) {
+           	 	// 以当前ThreadLocal实例对象为key获取对应的存储实体e
+            	ThreadLocalMap.Entry e = map.getEntry(this);
+            	// 找到对应的存储实体e
+            	if (e != null) {
+               		 @SuppressWarnings("unchecked")
+               		 // 获取e对应的value值,也就是我们想要的当前线程对应此ThreadLocal的值
+                	T result = (T)e.value;
+                	return result;
+            	}
+        	}
+        	// 如果map不存在,证明此线程没有维护此ThreadlocalMap对象,进行一波初始化操作
+        	return setInitialValue();
+    	}
+
+   	 	/**
+     	* set的变样实现,用于初始化值initialValue
+     	* 用来代替防止用户重写set而无法初始化
+     	* @return 返回初始化后的值
+    	 */
+    	private T setInitialValue() {
+        	T value = initialValue();
+        	Thread t = Thread.currentThread();
+        	ThreadLocalMap map = getMap(t);
+        	// 如果此map村咋洗,调用map,set设置此实体entry
+       	 	if (map != null)
+            	map.set(this, value);
+        	else
+        	 // map不存在时,调用此方法进行ThreadLocalMap对象初始化并将此entry作为第一个值放进去
+            	createMap(t, value);
+         	// 返回设置的value值s
+        	return value;
+    	}
+
+    	/**
+     	* 设置此线程对应的ThreadLocal的值,大多数子类不需要重写此方法,
+    	 * 只需要依赖{@link #initialValue} 方法代替设置当前线程对应的ThreadLocal值
+     	* @param 将要保存在当前线程对应的ThreadLocal值
+     	* 1. 获取当前线程`Thread`对象,进而获取此线程对象中维护的`ThreadLocalMap`对象
+     	*2. 判断当前的`ThreadLocalMap`是否存在,如果存在就直接调用map.set设置entry,如果不存在就调用`createMap`进行`ThreadLocalMap`对象的初始化,并将此实体`entry`作为第一个值存放到`ThreadLocalMap`中。
+     	*/
+    	public void set(T value) {
+        	Thread t = Thread.currentThread();
+        	// 获取当前线程的ThreadLocalMap实例
+        	ThreadLocalMap map = getMap(t);
+        	// 存在就设置此entry
+        	if (map != null)
+            	map.set(this, value);
+        	else
+        	// 不存在就进行对象初始化并设置entry作为第一个值存入ThreadLocalMap中
+            	createMap(t, value);
+    	}
+
+    	/**
+     	* 删除当前线程中保存ThreadLocal对应的实体entry
+     	* 如果此ThreadLocal变量在当前线程中调用{@linkplain #get read} 方法
+     	* 则会通过调用{@link #initialValue} 方法进行初始化
+     	* 除非此值value是通过当前线程内置调用set方法设置
+     	* 这可能导致在当前线程中多次调用initialValue方法初始化
+    	 * 1. 获取当前线程Thread对象，进而获取此线程对象中维护的ThreadLocalMap对象。
+     	* 2.  判断`ThreadLocalMap`是否存在,如果存在,调用map.remove,以当前的`ThreadLocal`为key删除对应的`entry`
+     	*/
+    	 public void remove() {
+        	 // 获取当前线程Thread对象,进而获取此线程对象中维护的`ThreadLocalMap`对象
+         	ThreadLocalMap m = getMap(Thread.currentThread());
+        	if (m != null)
+         	// 如果`ThreadLocalMap`存在调用remove方法删除之,当前ThreadLocal对象为key
+             	m.remove(this);
+     	}
+
+    	/**
+     	* 获取当前对象Thread对应维护的ThreadLocalMap
+     	* @param  当前线程
+     	* @return 对应的ThreadLocalMap
+    	 */
+    	ThreadLocalMap getMap(Thread t) {
+       	 	return t.threadLocals;
+    	}
+####17.3.3.ThreadLocal的内部类ThreadLocalMap
+- ThreadLocalMap 其内部利用 Entry 来实现 key-value 的存储，类似 HashMap 的结构 如下代码，从上面代码中可以看出 Entry 的 key 就是 ThreadLocal ，而value 就是值。
+
+		static class Entry extends WeakReference<ThreadLocal<?>> {
+     		/** The value associated with this ThreadLocal. */
+    		 Object value;
+
+    		 Entry(ThreadLocal<?> k, Object v) {
+        		 super(k);
+         		value = v;
+     		}
+ 		}
+
+		private void set(ThreadLocal<?> key, Object value) {
+
+    		ThreadLocal.ThreadLocalMap.Entry[] tab = table;
+    		int len = tab.length;
+
+    		// 根据 ThreadLocal 的散列值，查找对应元素在数组中的位置
+    		int i = key.threadLocalHashCode & (len-1);
+
+    		// 采用“线性探测法”，寻找合适位置
+    		for (ThreadLocal.ThreadLocalMap.Entry e = tab[i];
+        		e != null;
+        		e = tab[i = nextIndex(i, len)]) {
+
+        		ThreadLocal<?> k = e.get();
+
+       			 // key 存在，直接覆盖
+        		if (k == key) {
+            		e.value = value;
+            		return;
+        		}
+
+        		// key == null，但是存在值（因为此处的e != null），说明之前的ThreadLocal对象已经被回收了
+        		if (k == null) {
+            		// 用新元素替换陈旧的元素
+           			 replaceStaleEntry(key, value, i);
+            		 return;
+        		}
+    		}
+
+    		// ThreadLocal对应的key实例不存在也没有陈旧元素，new 一个
+    		tab[i] = new ThreadLocal.ThreadLocalMap.Entry(key, value);
+
+    		int sz = ++size;
+
+    		// cleanSomeSlots 清楚陈旧的Entry（key == null）
+    		// 如果没有清理陈旧的 Entry 并且数组中的元素大于了阈值，则进行 rehash
+    		if (!cleanSomeSlots(i, sz) && sz >= threshold)
+        		rehash();
+		}
+
+		/**用了开放定址法，所以当前key的散列值和元素在数组的索引并不是完全对应的，首先取一个探测数（key的散列值），如果所对应的key就是我们所要找的元素，则返回，否则调用getEntryAfterMiss()，如下：*/
+		private Entry getEntryAfterMiss(ThreadLocal<?> key, int i, Entry e) {
+    		Entry[] tab = table;
+    		int len = tab.length;
+
+    		while (e != null) {
+        		ThreadLocal<?> k = e.get();
+        		if (k == key)
+            		return e;
+        		if (k == null)
+            		expungeStaleEntry(i);
+        		else
+            		i = nextIndex(i, len);
+       			e = tab[i];
+    		}
+    		return null;
+		}
+- 为了避免内存的泄露,每次使用完 ThreadLocal 的时候都需要调用 remove() 方法来擦除数据。
 
 ##18.乐观锁与悲观锁
 ###18.1.悲观锁

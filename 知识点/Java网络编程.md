@@ -136,3 +136,21 @@
 
 ##4.HTML5离线缓存工作流程
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/HTML5%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
+
+##5.优化[https://www.jianshu.com/p/51c0dd29fde7](https://www.jianshu.com/p/51c0dd29fde7 "优化")
+###5.1.存储、主机和操作系统方面
+- 主机架构稳定性
+- I/O 规划及配置
+- Swap 交换分区
+- OS 内核参数和网络问题
+###5.2.应用程序
+- 应用程序稳定性
+- SQL 语句性能
+- 串行访问资源
+- 性能欠佳会话管理
+- 这个应用适不适合用 MySQL
+###5.3.数据库优化
+- 内存
+- 数据库结构（物理&逻辑）
+- 实例配置
+- 
