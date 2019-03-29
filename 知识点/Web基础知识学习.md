@@ -1,4 +1,4 @@
-#一.TCP三次握手与四次挥手
+#一.TCP三次握手与四次挥手[https://blog.csdn.net/whuslei/article/details/6667471/](https://blog.csdn.net/whuslei/article/details/6667471/)
 
 
 
@@ -187,6 +187,11 @@
 ###11.1.1.HTTP/1.x 有连接无法复用、队头阻塞、协议开销大和安全因素等多个缺陷
 ###11.1.2.HTTP/2 通过多路复用、二进制流、Header 压缩等等技术，极大地提高了性能，但是还是存在着问题的
 ###11.1.3.QUIC 基于 UDP 实现，是 HTTP/3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议
+##11.2.HTTP2.0[https://blog.csdn.net/zhuyiquan/article/details/69257126](https://blog.csdn.net/zhuyiquan/article/details/69257126)
+
+
+
+
 
 #十二.WebService:Http+XML（[https://segmentfault.com/a/1190000013353808](https://segmentfault.com/a/1190000013353808)）
 ##12.1.XML：用于传输格式化的数据，是Web服务的基础。
@@ -214,6 +219,22 @@
 ###13.1.6.work工作目录：该目录用于存放jsp被访问后生成对应的server文件和.class文件
 ##13.2.web站点的目录
 ![](https://github.com/HelloWucq/working-knowledge-point/blob/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Web%E7%AB%99%E7%82%B9%E7%9B%AE%E5%BD%95.png)
+
+
+#十四.web之I/O模型与工作模式
+##14.1.系统调用：进程想获取磁盘中的数据，而能和硬件答交道的只能是内核，进程通知内核说要磁盘中的数据，此过程成为系统调用
+##14.2.I/O
+1. 磁盘把数据装载到内核的内存空间
+2. 内核的内存空间的数据copy到用户的内存空间中(此过程是I/O发生的地方)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%BF%9B%E7%A8%8B%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%E8%BF%87%E7%A8%8B.png)
+
+
+
+
+
+
+
+
 
 
 
