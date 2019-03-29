@@ -1,4 +1,4 @@
-
+[http://www.runoob.com/linux/linux-command-manual.html](http://www.runoob.com/linux/linux-command-manual.html "Linu命令")
 #一、基础命令：
 	【1】补齐键：Table 
 	【2】显示当前工作目录的绝对路径：pwd 
