@@ -227,19 +227,12 @@
 1. 磁盘把数据装载到内核的内存空间
 2. 内核的内存空间的数据copy到用户的内存空间中(此过程是I/O发生的地方)
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%BF%9B%E7%A8%8B%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%E8%BF%87%E7%A8%8B.png)
-###14.2.1.阻塞IO图解
-![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E9%98%BB%E5%A1%9EIO%E8%BF%87%E7%A8%8B.gif)
-###14.2.2.非阻塞IO图解
-![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E9%9D%9E%E9%98%BB%E5%A1%9EIO.gif)
-###14.2.3.IO复用图解
-![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/IO%E5%A4%8D%E7%94%A8.gif)
-###14.2.4.事件驱动IO图解
-- 水平触发的事件驱动机制；内核通知进程来读取数据，进程没来读取数据，内核需要一次一次的通知进程
-- 边缘触发的事件驱动机制；内核只通知一次让进程来读取数据，进程可以在超时时间之内随时来读取数据
-![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8IO.gif)
 
-###14.2.5.异步IO图解
-![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%BC%82%E6%AD%A5IO.gif)
+
+
+
+
+
 
 
 
