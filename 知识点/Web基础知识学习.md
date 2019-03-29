@@ -221,19 +221,34 @@
 ![](https://github.com/HelloWucq/working-knowledge-point/blob/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Web%E7%AB%99%E7%82%B9%E7%9B%AE%E5%BD%95.png)
 
 
-#十四.web之I/O模型与工作模式
+#十四.web之I/O模型
 ##14.1.系统调用：进程想获取磁盘中的数据，而能和硬件答交道的只能是内核，进程通知内核说要磁盘中的数据，此过程成为系统调用
 ##14.2.I/O
 1. 磁盘把数据装载到内核的内存空间
 2. 内核的内存空间的数据copy到用户的内存空间中(此过程是I/O发生的地方)
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%BF%9B%E7%A8%8B%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%E8%BF%87%E7%A8%8B.png)
 
+###14.2.1.阻塞IO图解
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E9%98%BB%E5%A1%9EIO%E8%BF%87%E7%A8%8B.gif)
+###14.2.2.非阻塞IO图解
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E9%9D%9E%E9%98%BB%E5%A1%9EIO.gif)
+###14.2.3.IO复用图解
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/IO%E5%A4%8D%E7%94%A8.gif)
+###14.2.4.事件驱动IO图解
+- 水平触发的事件驱动机制；内核通知进程来读取数据，进程没来读取数据，内核需要一次一次的通知进程
+- 边缘触发的事件驱动机制；内核只通知一次让进程来读取数据，进程可以在超时时间之内随时来读取数据
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8IO.gif)
 
-
-
-
-
-
+###14.2.5.异步IO图解
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%BC%82%E6%AD%A5IO.gif)
+#十五.web工作模式
+##15.1.Prefork工作原理
+- 主进程生成多个工作进程，由工作进程一对一的去响应客户端的请求
+##15.2.Worker工作原理
+- 主进程生成多个工作进程，每个工作进程生成一个多个线程，每个线程去响应客户端的请求
+##15.3.Event工作原理
+- 主进程生成多个工作进程，每个工程进程响应多个客户端的请求，当接收到客户端的I/O操作请求后，把I/O操作交给内核执行，进程去响应其他客户端的请求，此进程最后接到内核的通知，然后通过此进程回复客户端的请求结果，通过事件回调函数
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Event%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.gif)
 
 
 
