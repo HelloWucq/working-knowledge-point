@@ -249,3 +249,6 @@
 ###1.6.可能导致阻塞的操作,数据库操作,第三方服务调用,中间件服务调用,同步获取锁,Sleep等
 ###1.7.Sharable注解的ChannelHandler要慎用
 ###1.8.避免将ChannelHandler加入到不同的ChannelPipeline中,会出现并发问题.
+
+
+#2.ByteBuf的零拷贝[https://www.cnblogs.com/xys1228/p/6088805.html](https://www.cnblogs.com/xys1228/p/6088805.html)

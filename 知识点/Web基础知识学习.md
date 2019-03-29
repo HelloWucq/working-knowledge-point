@@ -244,13 +244,22 @@
 #十五.web工作模式
 ##15.1.Prefork工作原理
 - 主进程生成多个工作进程，由工作进程一对一的去响应客户端的请求
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/prefork.gif)
 ##15.2.Worker工作原理
 - 主进程生成多个工作进程，每个工作进程生成一个多个线程，每个线程去响应客户端的请求
+
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Worker%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.gif)
 ##15.3.Event工作原理
 - 主进程生成多个工作进程，每个工程进程响应多个客户端的请求，当接收到客户端的I/O操作请求后，把I/O操作交给内核执行，进程去响应其他客户端的请求，此进程最后接到内核的通知，然后通过此进程回复客户端的请求结果，通过事件回调函数
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Event%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.gif)
 
+#十六.select/poll/epoll
 
+
+
+#十七.服务器设计模型[https://blog.csdn.net/u013074465/article/details/46276967](https://blog.csdn.net/u013074465/article/details/46276967)
+##17.1.Reactor
+##17.2.Proactor
 
 
 #十.补充知识
