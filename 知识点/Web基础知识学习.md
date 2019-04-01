@@ -206,19 +206,43 @@
 - Headers – 可选的。
 - Body – 必须的。在body部分，包含要执行的服务器的方法。和发送到服务器的数据。
 
-#十三.Tomcat(一个运行JAVA的网络服务器)
+
+
+
+#十三.Tomcat(一个运行JAVA的网络服务器)[https://www.cnblogs.com/crazylqy/p/4706223.html](https://www.cnblogs.com/crazylqy/p/4706223.html)
+- 三种工作模式：独立的Servlet容器、进程内的Servlet容器和进程外的Servlet容器
 ##13.1.目录文件
 ###13.1.1. bin：启动和关闭tomcat的bat文件
 ###13.1.2.conf:配置文件
 - server.xml该文件用于配置server相关的信息，比如tomcat启动的端口号，配置主机(Host)
 - web.xml文件配置与web应用（web应用相当于一个web站点）
 - tomcat-user.xml配置用户名密码和相关权限.
+- catalina.policy：Java相关的安全策略配置文件，在系统资源级别上提供访问控制的能力；
+- catalina.properties：Tomcat内部package的定义及访问相关控制，也包括对通过类装载器装载的内容的控制；Tomcat在启动时会事先读取此文件的相关设置；
+- logging.properties: Tomcat6通过自己内部实现的JAVA日志记录器来记录操作相关的日志，此文件即为日志记录器相关的配置信息，可以用来定义日志记录的组　　件级别以及日志文件的存在位置等；
+- context.xml：所有host的默认配置信息；
 ###13.1.3.lib：该目录放置运行tomcat运行需要的jar包
 ###13.1.4.logs：存放日志，当我们需要查看日志的时候，可以查询信息
 ###13.1.5.webapps：放置我们的web应用
 ###13.1.6.work工作目录：该目录用于存放jsp被访问后生成对应的server文件和.class文件
+
+
 ##13.2.web站点的目录
 ![](https://github.com/HelloWucq/working-knowledge-point/blob/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Web%E7%AB%99%E7%82%B9%E7%9B%AE%E5%BD%95.png)
+
+##13.3.Tomcat请求过程
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Tomcat%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B.png)
+
+
+
+
+
+
+
+
+
+
+
 
 
 #十四.web之I/O模型
