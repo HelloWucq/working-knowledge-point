@@ -189,7 +189,7 @@
 ###11.1.3.QUIC 基于 UDP 实现，是 HTTP/3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议
 ##11.2.HTTP2.0[https://blog.csdn.net/zhuyiquan/article/details/69257126](https://blog.csdn.net/zhuyiquan/article/details/69257126)
 
-
+##11.3.HTTPS=HTTP + 加密 + 认证 + 完整性保护
 
 
 
