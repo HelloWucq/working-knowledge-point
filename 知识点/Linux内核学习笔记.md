@@ -103,3 +103,22 @@
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
 
 #七.网络
+
+#八.LVM：动态卷管理，可以将多个硬盘和硬盘分区做成一个逻辑卷，并把这个逻辑卷作为一个整体来统一管理，动态对分区进行扩缩空间大小，安全快捷方便管理
+- 四个概念
+	- PE(Physical Extend)：物理拓展
+	- PV(Physical Volume):物理卷
+	- VG(Volumn Group)：卷组
+	- LV(Logical Volume):逻辑卷
+
+
+
+- 特点：对磁盘进行动态管理。逻辑卷的大小可以动态调整的，而且不会出现丢失数据，若增加硬盘，其也不会改变现有上层的逻辑卷
+- 原理
+	- 物理磁盘被格式化为PV,空间被划分为一个个的PE
+	- 不同的PV加入到同一个VG中，不同的PV的PE全部进入到VG的PE池内
+	- LV基于PE创建，大小为PE的整数倍，组成LV的PE可能来自不同的物理磁盘  
+	- LV现在就直接可以格式化后挂载使用了
+	- LV的扩充缩减实际上就是增加或减少组成该LV的PE数量，其过程不会丢失原始数据
+
+- 操作
