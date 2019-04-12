@@ -121,4 +121,6 @@
 	- LV现在就直接可以格式化后挂载使用了
 	- LV的扩充缩减实际上就是增加或减少组成该LV的PE数量，其过程不会丢失原始数据
 
-- 操作
+- 操作![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/LVM%E6%93%8D%E4%BD%9C.png)
+
+#九.RAID[https://blog.csdn.net/chenvast/article/details/77906712](https://blog.csdn.net/chenvast/article/details/77906712)
