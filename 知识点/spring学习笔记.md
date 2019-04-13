@@ -242,7 +242,7 @@
 
 
 #Spring Boot
-#1.1.核心
+##1.1.核心
 - 自动配置
 	- 使用显示配置进行覆盖
 	- 使用属性进行精细化配置 
@@ -256,9 +256,9 @@
 	- 应用程序最近处理过的HTTP请求的追踪情况
 	- 各种内存用量、垃圾回收、Web请求以及数据源用量相关指标
 
-#1.2.Actuator端点
+##1.2.Actuator端点
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Actuator%E7%AB%AF%E7%82%B9.png)
-##1.2.1.查看配置明细
+###1.2.1.查看配置明细
 - 获得Bean装配报告
 	- bean:Spring应用程序上下文中的Bean名称或ID
 	- resource:.class文件的物理位置，通常是一个URL，指向构建出的JAR文件，这会随应用程序的构建和运行方式发生变化
@@ -274,22 +274,27 @@
 
 - 端点到控制器的映射
 
-##1.2.2.运行时度量
+###1.2.2.运行时度量
 - 查看应用程序的度量值
 - 追踪Web请求
 - 导出线程活动
 - 监控应用程序的健康情况
 
-##1.2.3.关闭应用程序
-##1.2.4.获取应用信息
+###1.2.3.关闭应用程序
+###1.2.4.获取应用信息
 
-#1.3.定制Actuator
+##1.3.定制Actuator
 - 重命名端点
 - 启动和禁用端点
 - 自定义度量信息
 - 创建自定义仓库来存储跟踪数据
 - 插入自定义的健康指示器
  
-#1.4.保护Actuator端点
+##1.4.保护Actuator端点
 
-#2.Spring Boot应用程序的部署
+##2.Spring Boot应用程序的部署
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Spring%20Boot%E9%83%A8%E7%BD%B2%E9%80%89%E9%A1%B9.png)
+
+
+
+#Spring Cloud
