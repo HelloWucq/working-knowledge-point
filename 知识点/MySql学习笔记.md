@@ -415,6 +415,15 @@
 
 
 #补充
+-  长连接：连接成功后，客户端持续请求，则一直使用同一个连接，但其会引发MySQL内存涨的特别快，因为MySQL在执行过程中临时使用的内存是管理在连接对象里的，这些资源会在断开连接才释放
+	-  定期断开长连接
+	-  如果使用MySQL5.7或更新版本，可以通过执行mysql_reset_connection来重新初始化连接资源，这个过程不需要使用重连和重新做权限验证，但是会将连接恢复到刚刚创建完成时的状态
+
+##1.WAL(Write-Ahead Logging)：先写日志，再写磁盘
+###1.1.1.日志
+- redo log
+- binlog
+ 
 ##1.长事务
 - 避免长事务对业务的影响
 
@@ -509,7 +518,7 @@
 - 全字段排序
 - rowid排序
 
-#8.数据可靠性
+##8.数据可靠性
 - binlog的写入机制：事务执行过程中，先把日志写到binlog cache,事务提交的时候，再把binlog cache写到binlog文件中
 
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/binlog%E5%86%99%E7%9B%98%E7%8A%B6%E6%80%81.png)
@@ -533,12 +542,28 @@
 	- 组提交 
 
 ##9.主备一致
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E4%B8%BB%E5%A4%87%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+
+##10.高可用
+
+##11.读写分离
+- 处理过期读
+	- 强制走主库方案
+	- sleep方案
+	- 判断主备无延迟方案
+	- 配合semi-sync方案
+	- 等主库位点方案
+	- 等GTID方案
+
+##12.误删数据
+- 误删行
+- 误删表/库
+- 延迟复制备库
+- 预防误删库、表
+- rm删除数据
 
 
-
-
-
-
+##13.join
 
 
 
