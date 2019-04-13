@@ -509,13 +509,30 @@
 - 全字段排序
 - rowid排序
 
+#8.数据可靠性
+- binlog的写入机制：事务执行过程中，先把日志写到binlog cache,事务提交的时候，再把binlog cache写到binlog文件中
 
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/binlog%E5%86%99%E7%9B%98%E7%8A%B6%E6%80%81.png)
+	- write和fsync的时机，由参数sync_binlog控制
+		- sync_binlog=0的时候，表示每次提交事务都只write，不fsync
+		- sync_binlog=1的时候，表示每次提交事务都fsync
+		- sync_binlog=N(N>1)时候，表示每次提交事务都write，但累计N个事务后才fsync  
+> 出现IO瓶颈时，将sync_binlog设置成一个比较大的值，可以提升性能，在实际场景中，需要考虑丢失日志量的可控性，主机发生异常重启时，会丢失最近N个事务的binlog日志
 
+- redo log写入机制
+ ![](https://github.com/HelloWucq/working-knowledge-point/blob/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MySQL%20redo%20log%E5%AD%98%E5%82%A8%E7%8A%B6%E6%80%81.png)
+	- redo log buffer中，物理上是在MySQL进程内存中
+	- 写到磁盘，但没有持久化，物理上式文件系统的page cache里面
+	- 持久化到磁盘中 
 
+	- 为了控制redo log的写入策略，InnoDB提供了innodb_flush_log_at_trx_commit参数
+		- 设置为0时，表示每次事务提交都只是把redo log留在redo log buffer中
+		- 设置为1时，表示每次事务提交都将redo log直接持久化磁盘中
+		- 设置为2时，表示每次事务提交时都是吧redo log写到page cache  
+	
+	- 组提交 
 
-
-
-
+##9.主备一致
 
 
 
