@@ -362,6 +362,9 @@ Object invoke(Object proxy, Method method, Object[] args)
 #15.各种引用的使用
 > 不同的引用类型，主要体现在对象不同的可达性状态和对垃圾收集的影响
 
+
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/%E5%AF%B9%E8%B1%A1%E5%8F%AF%E8%BE%BE%E6%80%A7%E7%8A%B6%E6%80%81%E6%B5%81%E8%BD%AC.png)
+
 > 强引用
 > 
 > 软引用
@@ -369,3 +372,22 @@ Object invoke(Object proxy, Method method, Object[] args)
 > 弱引用
 > 
 > 幻象引用：确保对象finalize以后，做某些事情的机制，比如，通常用来做所谓的Post-Mortem清理机制，也有人利用幻象引用监控对象的创建和销毁
+
+- 诊断JVM引用情况
+- 引用队列
+- Reachability Fence
+
+#16.Java的常用类库
+##16.1.字符串
+- String、StringBuffer（一个线程安全的可修改字符序列）、StringBuilder（去掉了线程安全部分）
+
+##16.2.集合
+
+##16.3.IO(BIO、NIO、AIO)
+- 文件拷贝
+	- 零拷贝技术 
+
+##16.4.缓存
+
+##17.垃圾回收
+> 垃圾回收的调优，从性能角度看，通常主要关注三个方面：内存占用、延时、吞吐量
