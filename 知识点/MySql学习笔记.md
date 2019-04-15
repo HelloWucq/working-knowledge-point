@@ -709,7 +709,13 @@
 	- 临时表可以与普通版同名
 	- show tables命令不显示临时表
 
-
+- 内存临时表（union；group by等场合），磁盘临时表
+	- 语句执行过程可以一边读过程，一边直接得到结果，是不需要额外内存的，否则就需要额外的内存，来保存中间结果
+	- join_buffer是无序数组，sort_buffer是有序数组，临时表的二维结构
+	- 如果执行逻辑需要用到二维表特性，就会优先考虑使用临时表 
+-  group by优化方法
+	- 索引
+	- 直接排序  
 - 内存表：使用Memory引擎的表，这种表的数据保存在内存中
 - 扩展-hash join
 
@@ -717,7 +723,29 @@
 - 如何选择驱动表
 	- 使用小表驱动大表 
 
+- InnoDB与Memory引擎的数据组织方式不同
+	- InnoDB引擎把数据放在主键索引，其他索引上保存的是主键id。索引组织表
+	- Memory引擎采用的是把数据单独存放，索引上保存数据位置的数据组织形式，堆组织表
 
+#14.自增主键
+- 自增值修改机制
+
+
+#15.最快复制一张表
+- mysqldump
+ 
+	mysqldump -h$host -P$port -u$user --add-locks=0 --no-create-info --single-transaction  --set-gtid-purged=OFF db1 t --where="a>900" --result-file=/client_tmp/t.sql
+- 导出CSV文件
+	- 这条语句会将结果保存在服务端
+	- into outfile指定文件的生成位置，这个位置必须受参数secure_file_priv的限制。参数secure_file_priv的可选值和作用
+		- 如果设置为empty,表示不限制文件生成的位置
+		- 吐过设置为一个表示路径的字符串，要求生成的文件只能放在这个指定的目录，或其子目录
+		- 如果设置为NULL，表示禁止这个MySQL实例上执行select ... into outfile操作
+	- 这条命令不会帮你覆盖文件，因此需要确保/server_temp/t.csv文件不存在，否则会报错
+	- 这条命令生成的文本文件中，原则上一个数据行对应文本文件的一行，但是，如果字段中包含换行符，在生成的文本中也会有换行符
+
+- 物理拷贝方法
+	
 
 
 

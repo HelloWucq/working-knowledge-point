@@ -341,3 +341,4 @@ Object invoke(Object proxy, Method method, Object[] args)
 - 在细节消息中包含能够捕获失败的信息
 - 努力是失败保持原子性
 - 不要忽略异常
+- Exception与Error的区别
