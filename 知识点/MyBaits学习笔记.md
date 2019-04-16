@@ -8,6 +8,9 @@
 ###1.2.5.虽有HQL,但性能较差。
 ##1.3.半自动映射框架（SQL,映射规则，POJO）
 
+#MyBatis整体结构
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBatis%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png)
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBatis%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF.png)
 
 #二.基础概念
 ##2.1.核心概念
@@ -40,7 +43,11 @@
 ###2.4.4.定义查询结果和POJO的映射关系
 
 
-
+#三.生命周期
+- SqlSessionFactoryBuilder：利用XML或者Java编码获得资源来构建SqlSessionFactory的，通过它可以构建多个SessionFactory。它的作用就是一个构建器，一旦构建SqlSessionFactory，作用就已经完结，此时就应该毫不犹豫的废弃它，将其回收，其生命周期只存在于方法的局部
+- SqlSessionFactory：创建SqlSession，而SqlSession就是一个会话，相当于JDBC中的Connection对象，SqlSessionFactory应该在MyBatis应用的整个生命周期。如果我们多次创建同一个数据库的SqlSessionFactory,则每次创建SqlSessionFactory会打开更多的数据库连接资源，则其很快就会耗尽，因此SqlSessionFactory的责任是唯一的，就是创建SqlSession，应该采用单例模式
+- SqlSession：一个会话，相当于JDBC的一个Connection对象，其生命周期应该是在请求数据库处理事务的过程中。其是一个线程不安全的对象，操作数据库需要注意其隔离级别，数据库锁等高级特性，每次创建SqlSession都必须及时关闭它，它的长期存在就会是数据库连接池的活动资源减少，对系统性能影响很大
+- Mapper:它应该在一个SqlSession事务方法之内，是一个方法级别的东西，它的最大的范围和SqlSession是相同的。尽管我们想一直保留着Mapper，你会发现其很难控制，尽量在一个SqlSession事务的方法中使用它们，然后废弃掉
 
 #三.配置
 ##3.1.配置Mybatis的XML文件的层次结构
@@ -178,7 +185,13 @@
 - 提交事务
 - 关闭资源
 
-
+#十.补充知识点
+##10.1.传统JDBC编程
+- 使用JDBC编程需要连接数据库，注册驱动和数据库信息
+- 操作Connection，打开Statement对象
+- 通过Statement执行SQL，返回结果到ResultSet对象
+- 使用ResultSet读取数据，通过代码转化为具体的POJO对象
+- 关闭数据库相关资源
 
 
 
