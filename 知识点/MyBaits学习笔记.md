@@ -48,6 +48,7 @@
 - SqlSessionFactory：创建SqlSession，而SqlSession就是一个会话，相当于JDBC中的Connection对象，SqlSessionFactory应该在MyBatis应用的整个生命周期。如果我们多次创建同一个数据库的SqlSessionFactory,则每次创建SqlSessionFactory会打开更多的数据库连接资源，则其很快就会耗尽，因此SqlSessionFactory的责任是唯一的，就是创建SqlSession，应该采用单例模式
 - SqlSession：一个会话，相当于JDBC的一个Connection对象，其生命周期应该是在请求数据库处理事务的过程中。其是一个线程不安全的对象，操作数据库需要注意其隔离级别，数据库锁等高级特性，每次创建SqlSession都必须及时关闭它，它的长期存在就会是数据库连接池的活动资源减少，对系统性能影响很大
 - Mapper:它应该在一个SqlSession事务方法之内，是一个方法级别的东西，它的最大的范围和SqlSession是相同的。尽管我们想一直保留着Mapper，你会发现其很难控制，尽量在一个SqlSession事务的方法中使用它们，然后废弃掉
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBatis%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
 
 #三.配置
 ##3.1.配置Mybatis的XML文件的层次结构
@@ -70,41 +71,38 @@
 	</configuration>
 	
 ##3.2.properties元素
-###3.2.1.property子元素
-###3.2.2.properties配置文件
-###3.2.3.程序参数传递
-
+- property子元素
+- properties配置文件
+- 程序参数传递
 
 ##3.3.settings设置(配置内容较多需要根据具体情况科学配置)
 
 
 ##3.4.typeAliases
-###3.4.1.系统定义别名
-###3.4.2.自定义别名
+- 系统定义别名
+- 自定义别名
 
+##3.5.typeHandler类型处理器（javaType类型与JDBC类型）:其作用是将参数从javaType转化为jdbcType，或者从数据库取出结果时把jdbcType转化为JavaType
 
-##3.5.typeHandler类型处理器（javaType类型与JDBC类型）
-
-##3.6.ObjectFactory
+##3.6.ObjectFactory：当MyBatis在构建一个结果返回时，都会使用ObjectFactory区构建POJO,在MyBatis中可以定制自己的对象工厂
 
 ##3.7.插件
 
 
 ##3.8.environments配置环境
-###3.8.1.配置环境可以注册多个数据源，每一个数据源分为两大部分：一个是数据库源的配置。另一个是数据库事务的配置
+- 配置环境可以注册多个数据源，每一个数据源分为两大部分：一个是数据库源的配置。另一个是数据库事务的配置
 
 ##3.9.databaseIdProvider
 
 
 ##3.10.映射器（Mapper）
-###3.10.1.定义映射器的接口
-###3.10.2.给出XML文件
-###3.10.3.引入映射器
-####3.10.3.1.文件路径引入
-####3.10.3.2.包名引入
-####3.10.3.3.类注册引入
-####3.10.3.4.用userMapper.xml引入
-
+- 定义映射器的接口
+- 给出XML文件
+- 引入映射器
+	-  文件路径引入
+	-  包名引入
+	-  类注册引入
+	-  用userMapper.xml引入
 
 #四.映射器
 ##4.1.select元素
@@ -120,7 +118,7 @@
 
 ##4.5.sql元素
 
-##4.6.resultMap结果映射集
+##4.6.resultMap（结果集映射的映射关系）：定义映射规则、级联的更新、定制类型转化器
 ###4.6.1.级联查询
 
 ##4.7.缓存cache：[https://www.jianshu.com/p/c553169c5921](https://www.jianshu.com/p/c553169c5921)
@@ -192,6 +190,9 @@
 - 通过Statement执行SQL，返回结果到ResultSet对象
 - 使用ResultSet读取数据，通过代码转化为具体的POJO对象
 - 关闭数据库相关资源
+
+##10.2.#和$的区别
+- 设置的参数#（name）在大部分的情况下MyBatis会用创建预编译的语句，然后MyBatis为其设值；$(name)传递SQL语句本身，而不是SQL需要的参数，不安全
 
 
 
