@@ -123,7 +123,7 @@
 
 ##4.7.缓存cache：[https://www.jianshu.com/p/c553169c5921](https://www.jianshu.com/p/c553169c5921)
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBaits%E7%9A%84%E7%BC%93%E5%AD%98.png)
-###4.7.1.一级缓存（只是相对于同一个SqlSession而言）
+###4.7.1.一级缓存（只是相对于同一个SqlSession而言）：相当于针对一个连接
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/MyBaits%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE.png)
 ###4.7.2.二级缓存：实现二级缓存时，Mybatis要求返回的POJO必须可序列化
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Mybaits%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
@@ -148,21 +148,31 @@
 
 #六.MyBatis解析和运行原理
 ##6.1.创建SqlSessionFactory
-###6.1.1.通过XMLConfigBuilder解析配置的XML文件，读出配置参数，并将读取的数据存入Configuration类中
-###6.1.2.使用Configuration对象创建SqlSessionFactory，Mybatis提供了一个默认的SqlSessionFactory实现类，这种创建方式是一种Builder模式
+- 通过XMLConfigBuilder解析配置的XML文件，读出配置参数，并将读取的数据存入Configuration类中
+- 使用Configuration对象创建SqlSessionFactory，Mybatis提供了一个默认的SqlSessionFactory实现类，这种创建方式是一种Builder模式
 
 
 ##6.2.SqlSession运行过程
 ###6.2.1.映射器的动态代理
 ###6.2.2.SqlSession四大对象
-####6.2.2.1.Executor:执行器，调度StatementHandler、ParameterHandler、ResultHandler等执行SQL
-####6.2.2.2.StatementHandler：使用数据库的Statement(PreparedStatement)执行操作
-####6.2.2.3.ParameterHandler：用于SQL对参数的处理
-####6.2.2.4.ResultHandler是进行最后数据集的封装返回结果
+- Executor:执行器，调度StatementHandler、ParameterHandler、ResultHandler等执行SQL
+	- SIMPLE
+	- REUSE:一种执行器重用预处理语句
+	- BATCH:执行器重用语句和批量更新 
+- StatementHandler：使用数据库的Statement(PreparedStatement)执行操作
+- ParameterHandler：用于SQL对参数的处理
+- ResultHandler是进行最后数据集的封装返回结果
 
 
 
 #七.插件
+##7.1.映射器
+- MappedStatement:保存映射器的一个节点（select|insert|delete|update）。包括配置的SQL、SQL的id、缓存信息等
+- SqlSource:提供BoundSql对象的地方，是MappedStatement的一个属性
+- BoundSql:建立SQL和参数的地方，主要有三个属性
+	- parameterMappings：它是一个List,每一个元素都是ParameterMapping的对象，这个参数描述我们的参数
+	- parameterObject:参数本身，可以传递简单对象，POJO,Map或者@Param注解参数
+	- sql：书写在映射器里面的一条SQL 
 
 
 
