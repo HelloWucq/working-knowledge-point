@@ -1,20 +1,129 @@
 #一.基本数据结构学习
 ##1.1.链表结构（双向链表结构）
+- 链表节点
+
+	    typedef struct listNode{
+			struct listNode *prev;
+			strcut listNode *next;
+			void *value;
+		}listNode;
+- 链表
+
+    	typedef struct list{
+			listNode *head;
+			listNode *tail;
+			unsigned long len;
+			void *(*dup)(void *ptr);
+			void (*free)(void *ptr);
+			int (*match)(void *ptr,void *key);
+		}list;
 ###1.1.1.利用list表头管理链表信息
 ##1.2.简单动态字符串（SDS）
 ###1.2.1.表头信息用来存放sds的信息
-    struct sdshdr { int len; //buf中已占用空间的长度 int free; //buf中剩余可用空间的长度 char buf[]; //初始化sds分配的数据空间，而且是柔性数组（Flexible array member） };
-###1.2.2.空间预分配，减少连续执行字符串增长操作所需的内存重分配次数。
-###1.2.3.惰性空间释放：当要缩短SDS保存的字符串时，程序并不立即使用内存充分配来回收缩短后多出来的字节，而是使用表头的free成员将这些字节记录起来，并等待将来使用。
+    struct sdshdr { 
+		int len; //buf中已占用空间的长度 
+		int free; //buf中剩余可用空间的长度 
+		char buf[]; //初始化sds分配的数据空间，而且是柔性数组（Flexible array member） 
+	};
+- 通过未使用空间，SDS使用了优化策略
+	- 空间预分配，减少连续执行字符串增长操作所需的内存重分配次数。
+	- 惰性空间释放：当要缩短SDS保存的字符串时，程序并不立即使用内存充分配来回收缩短后多出来的字节，而是使用表头的free成员将这些字节记录起来，并等待将来使用。
+
 ###1.2.4.杜绝缓冲区溢出（先进行内存扩展，在进行追加）
+
+
 ##1.3.字典结构（哈希表，链接法解决冲突）
+- 使用哈希表作为底层实现
+
+    	typedef struct dictht{
+			//哈希表数组
+			dictEntry **table;
+		 	//哈希表大小
+			unsigned long size;
+			//哈希表大小掩码，用于计算索引值
+			unsigned long sizemask;
+			//该哈希表已有节点的数量
+			unsigned long used;
+		}dictht;
+- 哈希表节点
+
+    	typedef struct dictEntry{
+			void *key;
+			union{
+				void *val;
+				uint64 _tu64;
+				int64 _ts64;
+			}v;
+			struct dictEntry *next;
+		}dictEntry;
+- 字典
+
+    	typedef struct dict{
+			//类型特定函数
+			dictType *type;
+			//私有数据
+			void *privdata;
+			//哈希表
+			dictht ht[2];
+			//rehash索引
+			int trehashidx;
+		}dict;
+
 ###1.3.1.两张hash表
-###1.3.2.rehash操作步骤（1.扩展或收缩 （扩展：ht[1]的大小为第一个大于等于ht[0].used * 2的 2n次幂；收缩：ht[1]的大小为第一个大于等于ht[0].used的 2的n次幂）；2.将所有的ht[0]上的节点rehash到ht[1]上；3.释放ht[0]，将ht[1]设置为第0号表，并创建新的ht[1]）
+###1.3.2.rehash操作步骤
+- 1.扩展或收缩 （扩展：ht[1]的大小为第一个大于等于ht[0].used * 2的 2n次幂；收缩：ht[1]的大小为第一个大于等于ht[0].used的 2的n次幂）；
+- 2.将所有的ht[0]上的节点rehash到ht[1]上；
+- 3.释放ht[0]，将ht[1]设置为第0号表，并创建新的ht[1]）
+
+> 渐进式rehash
+
+
+
 ##1.4.跳跃表
+- 跳跃表节点
+
+    	typedef struct zskiplistNode{
+			//层
+			struct zskiplistLevel{
+				//前进指针
+				struct zskiplistNode *forward;
+				//跨度
+				unsigned int span;
+			}level[];
+			//后退指针
+			struct zskiplistNode *backward;
+			//分值
+			double score;
+			//成员对象
+			robj *obj;
+		}zskiplistNode;
+
+- 跳跃表
+
+    	typedef struct zskiplist{
+			struct zskiplistNode *header,*tail;
+			//表中节点的数量
+			unsigned long length;
+			//表中层数最大的节点的层数
+			int level;
+		}zskiplist;
+
 ###1.4.1.幂次定律：返回一个随机层数值，随机算法所使用的幂次定律。
 ###1.4.2.redis中实现有序集合的办法是：跳跃表+哈希表（1.跳跃表元素有序，而且可以范围查找，且比平衡树简单；2.哈希表查找单个key时间复杂度性能高）
+
+
+
+
 ##1.5.整数集合
+    typedef strcut intset{
+		uint32_t encoding;
+		uint32_t length;
+		int8_t contents[];
+	}intset;
 ###1.5.1.数据的升级（内存）
+    
+
+
 ##1.6.压缩列表
 ###1.6.1.当保存的对象是小整数值，或者是长度较短的字符串，那么redis就会使用压缩列表来作为哈希键的实现。
 ###1.6.2.特点（1.压缩列表ziplist结构本身就是一个连续的内存块，由表头、若干个entry节点和压缩列表尾部标识符zlend组成，通过一系列编码规则，提高内存的利用率，使用于存储整数和短字符串；2.压缩列表ziplist结构的缺点是：每次插入或删除一个元素时，都需要进行频繁的调用realloc()函数进行内存的扩展或减小，然后进行数据”搬移”，甚至可能引发连锁更新，造成严重效率的损失）

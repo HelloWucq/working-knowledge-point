@@ -153,6 +153,7 @@
 
 
 ##6.2.SqlSession运行过程
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/SqlSession%E5%86%85%E9%83%A8%E8%BF%90%E8%A1%8C%E5%9B%BE.png)
 ###6.2.1.映射器的动态代理
 ###6.2.2.SqlSession四大对象
 - Executor:执行器，调度StatementHandler、ParameterHandler、ResultHandler等执行SQL
@@ -165,7 +166,7 @@
 
 
 
-#七.插件
+#七.插件（模板模式）
 ##7.1.映射器
 - MappedStatement:保存映射器的一个节点（select|insert|delete|update）。包括配置的SQL、SQL的id、缓存信息等
 - SqlSource:提供BoundSql对象的地方，是MappedStatement的一个属性
@@ -173,7 +174,15 @@
 	- parameterMappings：它是一个List,每一个元素都是ParameterMapping的对象，这个参数描述我们的参数
 	- parameterObject:参数本身，可以传递简单对象，POJO,Map或者@Param注解参数
 	- sql：书写在映射器里面的一条SQL 
-
+##7.2.插件接口Interceptor
+    public inter Interceptor{
+		//覆盖拦截对象原有的方法，参数Invocation，通过它可以反射调度原来对象的方法
+		Object intercept(Invocation invocation) throws Throwable;
+		//target是被拦截的对象，其作用是给被拦截对象生成一个代理对象，并返回它
+		Object plugin(Object target);
+		//允许在plugin元素中配置所需参数，方法在插件初始化的时候就被调用一次，然后把插件对象存入到配置中，以便后面取出
+		void setProperties(Properties properties);
+	}
 
 
 #八.补充
