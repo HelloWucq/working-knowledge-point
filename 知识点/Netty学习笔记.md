@@ -252,7 +252,7 @@
 - ByteBufUtil类
 
 #六.ChannelPipeline、ChannelHandler、ChannelHandlerContext
-
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Channel%E3%80%81ChannelPipeline%E3%80%81ChannelHandler%E4%BB%A5%E5%8F%8AChannelHandlerContext%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png)
 
 
 #七.EventLoop和线程模型
