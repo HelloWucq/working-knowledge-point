@@ -186,14 +186,22 @@
 ###3.1.1.Channel----Socket
 ###3.1.2.EventLoop---控制流、多线程处理、并发
 ###3.1.3.ChannelFuture---异步处理
-##3.2.三者之间的关系
-###3.2.1.一个 EventLoopGroup 包含一个或者多个 EventLoop
-###3.2.2.一个 EventLoop 在它的生命周期内只和一个 Thread 绑定
-###3.2.3.所有由 EventLoop 处理的 I/O 事件都将在它专有的 Thread 上被处理
-###3.2.4.一个 Channel 在它的生命周期内只注册于一个 EventLoop
-###3.2.5.一个 EventLoop 可能会被分配给一个或多个 Channel
+- 三者之间的关系
+	- 一个 EventLoopGroup 包含一个或者多个 EventLoop
+	- 一个 EventLoop 在它的生命周期内只和一个 Thread 绑定
+	- 所有由 EventLoop 处理的 I/O 事件都将在它专有的 Thread 上被处理
+	- 一个 Channel 在它的生命周期内只注册于一个 EventLoop
+	- 一个 EventLoop 可能会被分配给一个或多个 Channel
+
+##3.2.ChannelHandler和ChannelPipeline
+###3.2.1.ChannelHandler
+###3.2.2.ChannelPipeline:提供了ChannelHandler联的容器，并定义了用于在该链上传播入站和出站事件流的API
+##3.3.引导
+
+
 
 #四.传输
+> 流经网络的数据总是具有相同的类型：字节
 ##4.1.NIO:选择器：充当一个注册表，请求在Channel的状态发生改变时得到通知
 ##4.2.Epoll
 ##4.3.OIO

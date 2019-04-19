@@ -185,6 +185,46 @@
 ##7.1.拓扑结构
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/redis%20cluster%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84.png)
 
+##7.2.配置一致性
+###7.2.1.配置信息数据结构
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/redis%20cluster%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png)
+- clusterState:记录了从集群中某个节点视角，来看集群配置状态
+- currentEpoch:表示整个集群中最大的版本号，集群信息每变更一次，该版本号都会自增
+- nodes是一个列表，包含本节点所感知的，集群所有节点的信息，也包含自身的信息
+- clusterNode记录了每个节点的信息，其中包含了节点本身的版本Epoch;自身的信息描述：节点对应的数据分片范围、为master时的slave列表，为slave时的master等
+- 每个节点包含一个全局唯一的NodeId
+
+###7.2.2.信息交互
+
+##7.3.一致性的达成：当Cluster结构不发生变化时，每个节点通过gossip协议在几轮交互之后，便可以得知cluster的结构信息，达到一致性的状态，但集群结构发生变化时，优先得知变更的节点通过Epoch变量，将自己的最新信息扩展到cluster,并最终达到一致
+- 当某个节点率先知道了变更时，将自身的currentEpoch 自增，并使之成为集群中的最大值。再用自增后的currentEpoch 作为新的Epoch 版本；
+- 当某个节点收到了比自己大的currentEpoch时，更新自己的currentEpoch；
+- 当收到的Redis Cluster Bus 消息中的某个节点的Epoch > 自身的时，将更新自身的内容；
+- 当Redis Cluster Bus 消息中，包含了自己没有的节点时，将其加入到自身的配置中。
+
+##7.4.sharding
+###7.4.1.数据分片
+###7.4.2.客户端的路由
+###7.4.3.分片的迁移
+
+
+
+##7.5.failover
+###7.5.1.failover的状态变迁
+- 故障发现：当某个master宕机时，宕机时间如何被集群其他节点感知
+- 故障确认：多个节点就某个master是否宕机如何达成一致
+- slave选举：集群确认了某个master宕机后，如何将它的slave升级成新的master；如果有多个slave，如何选择升级
+- 集群结构变更：成功选举成为master后，如何让整个集群知道，以更新Cluster结构信息
+
+##7.6.可用性和性能
+###7.6.1.读写分离
+###7.6.2.master单点保护
+
+
+
+
+
+
 
 
 
