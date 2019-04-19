@@ -235,6 +235,7 @@
 - 直接缓冲区：避免在每次调用本地IO操作前后将缓冲区的内容复制到一个中间缓冲区；相对于基于堆的缓冲区，分配和释放较为昂贵；因为数据不是在堆上，不得不进行一次复制
 - 复合缓冲区
 ##5.4.字节级操作
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/ByteBuf%E5%86%85%E9%83%A8%E5%88%86%E6%AE%B5.png)
 ###5.4.1.随机访问索引
 ###5.4.2.顺序访问索引
 ###5.4.3.可丢弃字节
@@ -244,6 +245,11 @@
 ###5.4.7.查找操作
 ###5.4.8.派生缓冲区
 ###5.4.9.读/写操作
+##5.5.ByteBufHolder:缓冲区池化
+##5.6.ByteBuf分配
+- 按需分配：ByteBufAllocator接口
+- Unpooled缓冲区
+- ByteBufUtil类
 
 #六.ChannelPipeline、ChannelHandler、ChannelHandlerContext
 
