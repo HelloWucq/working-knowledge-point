@@ -256,9 +256,15 @@
 
 
 #七.EventLoop和线程模型
-
+- EventLoop执行逻辑
 ![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/EventLoop%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91.png)
 > 永远不要将一个长时间运行的任务放到执行队列中，因为它将阻塞需要在同一个线程上执行的任何其他任务，如果必须要进行阻塞调用或者执行长时间运行的任务，建议使用一个专门的EventExecutor
+
+- EventLoop分配方式
+
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/EventLoop%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F.png)
+
+
 
 ##7.1.池化和重用线程相对于简单地为每个任务都创建和销毁线程是一种进步，但是它并不能消除由上下文切换所带来的开销，其将随着线程数量的增加很快变得明显
 ##7.2.EventLoop：将由一个永远都不会改变的 Thread 驱动， 同时任务（Runnable 或者 Callable）可以直接提交给 EventLoop 实现，以立即执行或者调度执行；单个EventLoop 可能会被指派用于服务多个 Channel
@@ -268,7 +274,7 @@
 
 
 #八.引导
-##8.1.编写Netty应用程序的一个一般原则：仅可能的重用EventLoop,以减少线程创建带来的开销
+> 编写Netty应用程序的一个一般原则：仅可能的重用EventLoop,以减少线程创建带来的开销
 
 
 #九.编解码器
