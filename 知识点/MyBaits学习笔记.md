@@ -96,6 +96,7 @@
 
 
 ##3.10.映射器（Mapper）
+![](https://github.com/HelloWucq/working-knowledge-point/raw/master/%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87/Mapper%E5%8E%9F%E7%90%86.png)
 - 定义映射器的接口
 - 给出XML文件
 - 引入映射器
