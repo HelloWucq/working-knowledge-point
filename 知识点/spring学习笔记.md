@@ -99,9 +99,9 @@
 ##8.3.方法注入（lookup方法；方法替换）
 ##8.4.<bean>之间的关系（继承；依赖；引用）
 ##8.5.Bean的作用域
-###8.5.1.singleton作用域：懒加载问题
-###8.5.2.prototype作用域：创建一个新的实例
-###8.5.3.web应用环境相关（request;session;globalSession）
+- singleton作用域：懒加载问题
+- prototype作用域：创建一个新的实例
+- web应用环境相关（request;session;globalSession）
 ##8.6.FactoryBean
 
 #九.基于注解的配置
@@ -122,23 +122,23 @@
 
 #十一.Spring MVC详解
 ##11.1.处理请求的整体过程
-###11.1.1.客户端发出一个HTTP请求，Web应用服务器接收到这个请求，如果匹配DispatcherServlet的请求映射路径，则Web容器将该请求转交给DispatcherServlet处理
-###11.1.2.DispatcherServlet接收到这个请求后，根据请求的信息及HandlerMapping的配置找到处理请求的处理器。
-###11.1.3.当DispatcherServlet根据HandlerMapping得到对应当前请求的Handler后，通过HandlerAdpter对Handler进行封装，再以统一的适配器接口调用Handler
-###11.1.4.处理器完成业务逻辑的处理后将返回一个ModelAndView给DispatcherServlet,ModelAndView包含了视图逻辑名和模型数据信息
-###11.1.5.ModelAndView中包含的是“逻辑视图名”而非真正的视图对象，DispatcherServlet借由ViewResolver完成逻辑视图名到真实视图对象的解析工作
-###11.1.6.得到真实的视图对象View后，DispatcherServlet就使用这个View对象对ModelAndView中的模型数据进行视图渲染
-###11.1.7.最终客户端得到的响应消息可能是一个普通的HTML页面，也可能是一个XML或Json串，甚至一张图片或一个PDF文档等不同的媒体形式
+- 客户端发出一个HTTP请求，Web应用服务器接收到这个请求，如果匹配DispatcherServlet的请求映射路径，则Web容器将该请求转交给DispatcherServlet处理
+- DispatcherServlet接收到这个请求后，根据请求的信息及HandlerMapping的配置找到处理请求的处理器。
+- 当DispatcherServlet根据HandlerMapping得到对应当前请求的Handler后，通过HandlerAdpter对Handler进行封装，再以统一的适配器接口调用Handler
+- 处理器完成业务逻辑的处理后将返回一个ModelAndView给DispatcherServlet,ModelAndView包含了视图逻辑名和模型数据信息
+- ModelAndView中包含的是“逻辑视图名”而非真正的视图对象，DispatcherServlet借由ViewResolver完成逻辑视图名到真实视图对象的解析工作
+- 得到真实的视图对象View后，DispatcherServlet就使用这个View对象对ModelAndView中的模型数据进行视图渲染
+- 最终客户端得到的响应消息可能是一个普通的HTML页面，也可能是一个XML或Json串，甚至一张图片或一个PDF文档等不同的媒体形式
 
 
 
 
 
 ##11.2.开发步骤
-###11.2.1.配置web.xml，指定业务层对应的Spring配置文件，定义DispatcherServlet
-###11.2.2.编写处理请求的控制器
-###11.2.3.编写视图对象，这里使用JSP作为视图
-###11.2.4.配置Spring MVC的配置文件，使控制器、视图解析器等生效
+- 配置web.xml，指定业务层对应的Spring配置文件，定义DispatcherServlet
+- 编写处理请求的控制器
+- 编写视图对象，这里使用JSP作为视图
+- 配置Spring MVC的配置文件，使控制器、视图解析器等生效
 
 
 ##11.3.注解驱动的控制器
@@ -155,56 +155,56 @@
 
 #十二.Spring常用注解
 ##12.1.声明bean的注解
-###12.1.1.@Component 组件，没有明确的角色
-###12.1.2.@Service 在业务逻辑层使用（service层）
-###12.1.3.@Repository 在数据访问层使用（dao层）
-###12.1.4.@Controller 在展现层使用，控制器的声明（C）
+- @Component 组件，没有明确的角色
+- @Service 在业务逻辑层使用（service层）
+- @Repository 在数据访问层使用（dao层）
+-@Controller 在展现层使用，控制器的声明（C）
 ##12.2.注入bean的注解：都可以注解在set方法和属性上，推荐注解在属性上（一目了然，少写代码）
-###12.2.1.@Autowired：由Spring提供
-###12.2.2.@Inject：由JSR-330提供
-###12.2.3.@Resource：由JSR-250提供
+- @Autowired：由Spring提供
+- @Inject：由JSR-330提供
+- @Resource：由JSR-250提供
 ##12.3.java配置类相关注解
-###12.3.1.@Configuration 声明当前类为配置类，相当于xml形式的Spring配置（类上）
-###12.3.2.@Bean 注解在方法上，声明当前方法的返回值为一个bean，替代xml中的方式（方法上）
-###12.3.3.@Configuration 声明当前类为配置类，其中内部组合了@Component注解，表明这个类是一个bean（类上）
-###12.3.4.@ComponentScan 用于对Component进行扫描，相当于xml中的（类上）
+- @Configuration 声明当前类为配置类，相当于xml形式的Spring配置（类上）
+- @Bean 注解在方法上，声明当前方法的返回值为一个bean，替代xml中的方式（方法上）
+- @Configuration 声明当前类为配置类，其中内部组合了@Component注解，表明这个类是一个bean（类上）
+- @ComponentScan 用于对Component进行扫描，相当于xml中的（类上）
 ##12.4.切面（AOP）相关注解
-###12.4.1.@Aspect 声明一个切面（类上）
-###12.4.2.使用@After、@Before、@Around定义建言（advice），可直接将拦截规则（切点）作为参数。
+- @Aspect 声明一个切面（类上）
+- 使用@After、@Before、@Around定义建言（advice），可直接将拦截规则（切点）作为参数。
 ##12.5.@Bean的属性支持
-###12.5.1.@Scope 设置Spring容器如何新建Bean实例（方法上，得有@Bean）：其设置类型包括：1）Singleton （单例,一个Spring容器中只有一个bean实例，默认模式）；2）Protetype （每次调用新建一个bean）；3）Request （web项目中，给每个http request新建一个bean）；4）Session （web项目中，给每个http session新建一个bean）；5）GlobalSession（给每一个 global http session新建一个Bean实例）
+- @Scope 设置Spring容器如何新建Bean实例（方法上，得有@Bean）：其设置类型包括：1）Singleton （单例,一个Spring容器中只有一个bean实例，默认模式）；2）Protetype （每次调用新建一个bean）；3）Request （web项目中，给每个http request新建一个bean）；4）Session （web项目中，给每个http session新建一个bean）；5）GlobalSession（给每一个 global http session新建一个Bean实例）
 ##12.6.@Value注解
-###12.6.1.@Value 为属性注入值（属性上）
+- @Value 为属性注入值（属性上）
 ##12.7.环境切换
-###12.7.1.@Profile 通过设定Environment的ActiveProfiles来设定当前context需要使用的配置环境。（类或方法上）
+- @Profile 通过设定Environment的ActiveProfiles来设定当前context需要使用的配置环境。（类或方法上）
 ##12.8.异步相关
-###12.8.1.@EnableAsync 配置类中，通过此注解开启对异步任务的支持，叙事性AsyncConfigurer接口（类上）
-###12.8.2.@Async 在实际执行的bean方法使用该注解来申明其是一个异步任务（方法上或类上所有的方法都将异步，需要@EnableAsync开启异步任务）
+- @EnableAsync 配置类中，通过此注解开启对异步任务的支持，叙事性AsyncConfigurer接口（类上）
+- @Async 在实际执行的bean方法使用该注解来申明其是一个异步任务（方法上或类上所有的方法都将异步，需要@EnableAsync开启异步任务）
 ##12.9.定时任务相关
-###12.9.1.@EnableScheduling 在配置类上使用，开启计划任务的支持（类上）
-###12.9.2.@Scheduled 来申明这是一个任务，包括cron,fixDelay,fixRate等类型（方法上，需先开启计划任务的支持）
+- @EnableScheduling 在配置类上使用，开启计划任务的支持（类上）
+- @Scheduled 来申明这是一个任务，包括cron,fixDelay,fixRate等类型（方法上，需先开启计划任务的支持）
 ##12.10.@Enable*注解说明：这些注解主要用来开启对xxx的支持
-###12.10.1.@EnableAspectJAutoProxy 开启对AspectJ自动代理的支持
-###12.10.2.@EnableAsync 开启异步方法的支持
-###12.10.3.@EnableScheduling 开启计划任务的支持
-###12.10.4.@EnableWebMvc 开启Web MVC的配置支持
-###12.10.5.@EnableConfigurationProperties 开启对@ConfigurationProperties注解配置Bean的支持
-###12.10.6.@EnableJpaRepositories 开启对SpringData JPA Repository的支持
-###12.10.7.@EnableTransactionManagement 开启注解式事务的支持
-###12.10.8.@EnableCaching 开启注解式的缓存支持
+- @EnableAspectJAutoProxy 开启对AspectJ自动代理的支持
+- @EnableAsync 开启异步方法的支持
+- @EnableScheduling 开启计划任务的支持
+- @EnableWebMvc 开启Web MVC的配置支持
+- @EnableConfigurationProperties 开启对@ConfigurationProperties注解配置Bean的支持
+- @EnableJpaRepositories 开启对SpringData JPA Repository的支持
+- @EnableTransactionManagement 开启注解式事务的支持
+- @EnableCaching 开启注解式的缓存支持
 ##12.11.测试相关注解
-###12.11.1.@RunWith 运行器，Spring中通常用于对JUnit的支持
-###12.11.2.@ContextConfiguration 用来加载配置ApplicationContext，其中classes属性用来加载配置类
+- @RunWith 运行器，Spring中通常用于对JUnit的支持
+- @ContextConfiguration 用来加载配置ApplicationContext，其中classes属性用来加载配置类
 ##12.12.SpringMVC相关注解
-###12.12.1.@EnableWebMvc 在配置类中开启Web MVC的配置支持，如一些ViewResolver或者MessageConverter等，若无此句，重写WebMvcConfigurerAdapter方法（用于对SpringMVC的配置）
-###12.12.2.@Controller 声明该类为SpringMVC中的Controller
-###12.12.3.@RequestMapping 用于映射Web请求，包括访问路径和参数（类或方法上）
-###12.12.4.@ResponseBody 支持将返回值放在response内，而不是一个页面，通常用户返回json数据（返回值旁或方法上）
-###12.12.5.@RequestBody 允许request的参数在request体中，而不是在直接连接在地址后面。（放在参数前）
-###12.12.6.@PathVariable 用于接收路径参数，比如@RequestMapping(“/hello/{name}”)申明的路径，将注解放在参数中前，即可获取该值，通常作为Restful的接口实现方法
-###12.12.7.@RestController 该注解为一个组合注解，相当于@Controller和@ResponseBody的组合，注解在类上，意味着，该Controller的所有方法都默认加上了@ResponseBody。
-###12.12.8.@ControllerAdvice 通过该注解，我们可以将对于控制器的全局配置放置在同一个位置，注解了@Controller的类的方法可使用@ExceptionHandler、@InitBinder、@ModelAttribute注解到方法上
-###12.12.9.@ExceptionHandler 用于全局处理控制器里的异常
+- @EnableWebMvc 在配置类中开启Web MVC的配置支持，如一些ViewResolver或者MessageConverter等，若无此句，重写WebMvcConfigurerAdapter方法（用于对SpringMVC的配置）
+- @Controller 声明该类为SpringMVC中的Controller
+- @RequestMapping 用于映射Web请求，包括访问路径和参数（类或方法上）
+- @ResponseBody 支持将返回值放在response内，而不是一个页面，通常用户返回json数据（返回值旁或方法上）
+- @RequestBody 允许request的参数在request体中，而不是在直接连接在地址后面。（放在参数前）
+- @PathVariable 用于接收路径参数，比如@RequestMapping(“/hello/{name}”)申明的路径，将注解放在参数中前，即可获取该值，通常作为Restful的接口实现方法
+- @RestController 该注解为一个组合注解，相当于@Controller和@ResponseBody的组合，注解在类上，意味着，该Controller的所有方法都默认加上了@ResponseBody。
+- @ControllerAdvice 通过该注解，我们可以将对于控制器的全局配置放置在同一个位置，注解了@Controller的类的方法可使用@ExceptionHandler、@InitBinder、@ModelAttribute注解到方法上
+- @ExceptionHandler 用于全局处理控制器里的异常
 
 #十三.spring中设计模式
 ##13.1.设计模式：[https://www.jianshu.com/p/2ae05fe6f318](https://www.jianshu.com/p/2ae05fe6f318 "spring中常用设计模式")
