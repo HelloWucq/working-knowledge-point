@@ -51,7 +51,8 @@
 ##4.Serial Old收集器
 ##5.Parallel Old收集器
 ##6.CMS收集器（获取最短回收停顿时间）
-##7.G1收集器
+##7.G1收集器[https://www.jianshu.com/p/7dd309cc3442](https://www.jianshu.com/p/7dd309cc3442)
+
 
 #七.内存分配与回收策略
 ##1.对象优先在Eden分配（当Eden区没有足够空间进行分配时，虚拟机将发生一次Minor GC）
@@ -73,7 +74,7 @@
 
 
 
-#九.配置参数的设置
+#九.配置参数的设置[https://www.jianshu.com/p/7f9e77c50e61](https://www.jianshu.com/p/7f9e77c50e61)
 ##1.最大堆和初始化堆的设置
 ##2.新生代的设置：一般设置为整个堆空间的1/3到1/4左右
 ##3.堆溢出处理：

@@ -770,7 +770,34 @@
 	- 全同步模式：全同步模式是指主节点和从节点全部执行了commit并确认才会向客户端返回成功。
 
 
+#17.补充知识点
+- where子句作用于基表或试图，从中选择满足条件的元组。HAVING短语作用于组，从中选择满足条件的组，一般结合GROUP BY一起使用
+- where用于数据查询之前；having用于数据查出来之后
+- from 后面的执行顺序where>聚合函数（sum,min,max,avg,count）>having
 
+> select语句的顺序问题
 
+``` 
+select 要查询的字段 
+from 查询的表  
+where 
+group by 
+having 分组后带有条件只能使用HAVING
+order by 
+limit 必须在最后
+```
+> MySQL授权和撤销权限操作
+```
+** 授权 **
+grant 权限 on 数据库对象 to 用户@'IP地址' IDENTIFIED by '密码'
 
+** 撤销授权 **
+revoke 权限 on 数据库对象 from 用户@'IP地址' IDENTIFIED by '密码'
+```
+> 数据库的导入（source）和导出（mysqldump）
 
+> 数据库设计规范与原则 [数据库设计规范与原则]:(https://www.cnblogs.com/qlqwjy/p/8425861.html)
+
+> mysql服务性能优化 []:(https://www.cnblogs.com/qlqwjy/p/8543484.html)
+
+> 子查询关键词（any,in,some,all）
